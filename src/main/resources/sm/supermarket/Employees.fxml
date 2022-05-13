@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.EmployeesController">
+   <children>
+      <Label fx:id="lbl_empID" layoutX="21.0" layoutY="14.0" text="Employee ID" />
+      <Label fx:id="lbl_firstname" layoutX="21.0" layoutY="82.0" text="Firstname" />
+      <Label fx:id="lbl_lastname" layoutX="21.0" layoutY="160.0" text="Lastname" />
+      <Label fx:id="lbl_gender" layoutX="23.0" layoutY="223.0" text="Gender" />
+      <Label fx:id="lbl_address" layoutX="193.0" layoutY="82.0" text="Address" />
+      <Label fx:id="lbl_birthday" layoutX="193.0" layoutY="14.0" text="Birthday" />
+      <Label fx:id="lbl_password" layoutX="412.0" layoutY="77.0" text="Password" />
+      <TextField fx:id="tf_employeeID" editable="false" layoutX="21.0" layoutY="43.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="tf_firstname" layoutX="21.0" layoutY="111.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="tf_lastname" layoutX="21.0" layoutY="189.0" prefHeight="26.0" prefWidth="150.0" />
+      <DatePicker fx:id="dp_dob" layoutX="193.0" layoutY="43.0" prefHeight="26.0" prefWidth="150.0" />
+      <JFXRadioButton fx:id="rb_male" layoutX="22.0" layoutY="255.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="rb_female" layoutX="103.0" layoutY="254.0" text="Female" toggleGroup="$gender" />
+      <TextArea fx:id="ta_address" layoutX="188.0" layoutY="112.0" prefHeight="36.0" prefWidth="186.0" />
+      <Label fx:id="lbl_username" layoutX="411.0" layoutY="18.0" text="Username" />
+      <TextField fx:id="tf_username" layoutX="410.0" layoutY="44.0" prefHeight="26.0" prefWidth="150.0" />
+      <PasswordField fx:id="pf_password" layoutX="410.0" layoutY="109.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label fx:id="lbl_role" layoutX="411.0" layoutY="160.0" text="Role" />
+      <JFXComboBox fx:id="cb_role" layoutX="411.0" layoutY="186.0" prefHeight="26.0" prefWidth="101.0" />
+      <TableView fx:id="tbl_employee" layoutX="13.0" layoutY="292.0" prefHeight="294.0" prefWidth="968.0">
+        <columns>
+          <TableColumn prefWidth="60.800015449523926" text="ID" />
+          <TableColumn prefWidth="119.19998168945312" text="Fristname" />
+            <TableColumn minWidth="7.199981689453125" prefWidth="99.99998474121094" text="Lastname" />
+            <TableColumn minWidth="0.0" prefWidth="92.800048828125" text="Birthday" />
+            <TableColumn prefWidth="70.39996337890625" text="Gender" />
+            <TableColumn prefWidth="122.4000244140625" text="Address" />
+            <TableColumn prefWidth="107.99993896484375" text="Phone No" />
+            <TableColumn prefWidth="109.60003662109375" text="Username" />
+            <TableColumn minWidth="0.0" prefWidth="111.20001220703125" text="Password" />
+            <TableColumn prefWidth="81.5999755859375" text="Role" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btn_addPhoto" layoutX="412.0" layoutY="241.0" prefWidth="110.0" style="-fx-background-color: #00db96;" text="Add Photo" />
+      <ImageView fx:id="img_photo" fitHeight="125.0" fitWidth="150.0" layoutX="778.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/buying_64px.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btn_add" layoutX="610.0" layoutY="108.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: AAE41B;" text="ADD" />
+      <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="168.0" text="Phone Number" />
+      <TextField fx:id="tf_phoneNo" layoutX="193.0" layoutY="189.0" prefHeight="26.0" prefWidth="150.0" />
+      <JFXButton fx:id="btn_update" layoutX="610.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #14f4d4;" text="UPDATE" />
+      <JFXButton fx:id="btn_delete" layoutX="610.0" layoutY="211.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #ff3300;" text="DELETE" />
+      <TextField fx:id="tf_search" layoutX="598.0" layoutY="44.0" promptText="Enter ID" />
+      <JFXButton fx:id="btn_search" layoutX="754.0" layoutY="44.0" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #f46414;" text="Search" />
+   </children>
+</AnchorPane>
