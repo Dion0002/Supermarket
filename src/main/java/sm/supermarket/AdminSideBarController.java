@@ -1,16 +1,19 @@
 package sm.supermarket;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -106,9 +109,19 @@ public class AdminSideBarController implements Initializable {
 
     @FXML
     private void logout(MouseEvent event) {
-        Stage stage = (Stage) btn_logout.getScene().getWindow();
-        stage.close();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Stage SignUPstage = new Stage();
+            SignUPstage.initStyle(StageStyle.UNDECORATED);
+            SignUPstage.setScene(new Scene(root));
+            SignUPstage.show();
 
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+        logutbutton();
     }
 
     @FXML
@@ -131,5 +144,10 @@ public class AdminSideBarController implements Initializable {
         }
         BoardPaneAdmin.setCenter(root);
 
+    }
+
+    public void logutbutton(){
+        Stage stage = (Stage)  btn_logout.getScene().getWindow();
+        stage.close();
     }
 }

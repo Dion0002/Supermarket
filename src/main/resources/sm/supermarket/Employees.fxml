@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +13,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.EmployeesController">
    <children>
@@ -40,7 +38,6 @@
       <TextField fx:id="tf_username" layoutX="410.0" layoutY="44.0" prefHeight="26.0" prefWidth="150.0" />
       <PasswordField fx:id="pf_password" layoutX="410.0" layoutY="109.0" prefHeight="26.0" prefWidth="150.0" />
       <Label fx:id="lbl_role" layoutX="411.0" layoutY="160.0" text="Role" />
-      <JFXComboBox fx:id="cb_role" layoutX="411.0" layoutY="186.0" prefHeight="26.0" prefWidth="101.0" />
       <TableView fx:id="tbl_employee" layoutX="13.0" layoutY="292.0" prefHeight="294.0" prefWidth="968.0">
         <columns>
           <TableColumn prefWidth="60.800015449523926" text="ID" />
@@ -55,18 +52,25 @@
             <TableColumn prefWidth="81.5999755859375" text="Role" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btn_addPhoto" layoutX="412.0" layoutY="241.0" prefWidth="110.0" style="-fx-background-color: #00db96;" text="Add Photo" />
-      <ImageView fx:id="img_photo" fitHeight="125.0" fitWidth="150.0" layoutX="778.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btn_addPhoto" layoutX="410.0" layoutY="228.0" onAction="#addPhoto" prefWidth="110.0" style="-fx-background-color: #00db96;" text="Add Photo" />
+      <ImageView fx:id="img_photo" fitHeight="150.0" fitWidth="150.0" layoutX="778.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/buying_64px.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btn_add" layoutX="610.0" layoutY="108.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: AAE41B;" text="ADD" />
+      <JFXButton fx:id="btn_add" layoutX="610.0" layoutY="108.0" onAction="#addBtn" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: AAE41B;" text="ADD" />
       <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="168.0" text="Phone Number" />
       <TextField fx:id="tf_phoneNo" layoutX="193.0" layoutY="189.0" prefHeight="26.0" prefWidth="150.0" />
       <JFXButton fx:id="btn_update" layoutX="610.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #14f4d4;" text="UPDATE" />
       <JFXButton fx:id="btn_delete" layoutX="610.0" layoutY="211.0" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #ff3300;" text="DELETE" />
       <TextField fx:id="tf_search" layoutX="598.0" layoutY="44.0" promptText="Enter ID" />
       <JFXButton fx:id="btn_search" layoutX="754.0" layoutY="44.0" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #f46414;" text="Search" />
+      <JFXRadioButton fx:id="rb_admin" layoutX="412.0" layoutY="187.0" text="Admin">
+         <toggleGroup>
+            <ToggleGroup fx:id="role" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="cashier" layoutX="485.0" layoutY="187.0" text="Cashier" toggleGroup="$role" />
+      <Label fx:id="lbl_photoPath" layoutX="201.0" layoutY="232.0" prefHeight="17.0" prefWidth="138.0" textFill="#faff91" />
    </children>
 </AnchorPane>

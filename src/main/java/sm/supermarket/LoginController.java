@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 /**
  * This class handel all function and other things that will be needed for the user login
  */
@@ -98,15 +99,11 @@ public class LoginController  {
 
 
        }else if(auth()==true){
-           auth();
-
        }
        else{
-
            lbl_invalid.setText("Incorrect username or password");
 
        }
-
 
     }
 
@@ -128,6 +125,8 @@ public class LoginController  {
             else  {
                 CusLog();
             }
+            Stage stage = (Stage)  btn_login.getScene().getWindow();
+            stage.close();
         }catch(Exception e){
 
         }
