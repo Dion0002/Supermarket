@@ -92,6 +92,7 @@ public class AdminSideBarController implements Initializable {
 
     @FXML
     private void customer(MouseEvent event) {
+
         loadPage("AdCustomer");
     }
 
@@ -129,10 +130,7 @@ public class AdminSideBarController implements Initializable {
         loadPage("Inventory");
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 
     private void loadPage(String Page)  {
         Parent root = null;
@@ -150,4 +148,10 @@ public class AdminSideBarController implements Initializable {
         Stage stage = (Stage)  btn_logout.getScene().getWindow();
         stage.close();
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadPage("Dashboard");
+    }
+
 }
