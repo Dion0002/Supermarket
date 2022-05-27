@@ -4,9 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -106,6 +110,20 @@ public class SignUpController {
      * @param event
      */
     public void GoBackButton(ActionEvent event) {
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Stage LoginPage = new Stage();
+            LoginPage.initStyle(StageStyle.UNDECORATED);
+            LoginPage.setScene(new Scene(root));
+            LoginPage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+
+
         Stage stage = (Stage) btn_goback.getScene().getWindow();
         stage.close();
     }
@@ -152,7 +170,7 @@ public class SignUpController {
 
 
 
-        String insertFields = "INSERT INTO useraccounts(firstname, lastname, username, password, gender, address,dob,role) VALUES ('";
+        String insertFields = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Role) VALUES ('";
         String inserValues = firstname + "','" + lastname + "','" +
                 username + "','" + password + "','" + togglevalue + "','" + address + "','" + locald + "','" + userrole + "')";
         String inserSingup = insertFields + inserValues;
@@ -160,7 +178,14 @@ public class SignUpController {
         try {
             Statement st = conDB.createStatement();
             st.executeUpdate(inserSingup);
-            lbl_regsucc.setText("User registered successfully");
+
+            String sql = "INSERT INTO userlogin(Username,Password,Role) Values('"+username+"','"+password+"','"+userrole+"')";
+            st.executeUpdate(sql);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Customer Registration");
+            alert.setTitle("Sign UP");
+            alert.setContentText("Registration Successfully");
+            alert.showAndWait();
 
 
         } catch (Exception e) {

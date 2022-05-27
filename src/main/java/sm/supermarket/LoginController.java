@@ -146,13 +146,12 @@ public class LoginController  {
         Connection conDB = conn.getConnection();
         List logLogin = new ArrayList();
 
-//        String verifyLogin="Select count(1) from useraccounts where username ='" +
-//                tf_username.getText() + "' and password ='" + pf_password.getText() + "'";
+
 
 
         //Enter the query for retrieving the info
-        String verifyLogin = "select username, password, role from useraccounts where username ='"+tf_username.getText()+
-                "' and password ='" + pf_password.getText() + "'";
+        String verifyLogin = "select Username, Password, Role from userlogin where Username ='"+tf_username.getText()+
+                "' and Password ='" + pf_password.getText() + "'";
 
 
          try{
@@ -166,13 +165,6 @@ public class LoginController  {
                      ur.setPassword(queryResult.getString("password"));
                      ur.setRole(queryResult.getString("role"));
                      logLogin.add(ur);
-
-
-//                 if (queryResult.getInt(1)==1){
-//                     Logged();
-//                 }else{
-//                     lbl_invalid.setText("Invalid login");
-//                 }
              }
 
          }catch (Exception e){
@@ -210,6 +202,9 @@ public class LoginController  {
             e.printStackTrace();
             e.getCause();
         }
+
+        Stage stage = (Stage) btn_signUp.getScene().getWindow();
+        stage.close();
     }
 
     /**

@@ -112,10 +112,10 @@ public class AdminSideBarController implements Initializable {
     private void logout(MouseEvent event) {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Stage SignUPstage = new Stage();
-            SignUPstage.initStyle(StageStyle.UNDECORATED);
-            SignUPstage.setScene(new Scene(root));
-            SignUPstage.show();
+            Stage LoginPage = new Stage();
+            LoginPage.initStyle(StageStyle.UNDECORATED);
+            LoginPage.setScene(new Scene(root));
+            LoginPage.show();
 
         }catch (Exception e){
             e.printStackTrace();
