@@ -93,7 +93,7 @@ public class AdminSideBarController implements Initializable {
     @FXML
     private void customer(MouseEvent event) {
 
-        loadPage("AdCustomer");
+        loadPage("Customer");
     }
 
     @FXML
@@ -123,11 +123,6 @@ public class AdminSideBarController implements Initializable {
         }
 
         logutbutton();
-    }
-
-    @FXML
-    void inventory(MouseEvent event) {
-        loadPage("Inventory");
     }
 
 

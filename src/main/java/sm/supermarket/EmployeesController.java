@@ -28,7 +28,6 @@ import static javafx.scene.control.Alert.AlertType.WARNING;
 public class EmployeesController implements Initializable {
 
     final ObservableList<String> opsions = FXCollections.observableArrayList("Admin", "Cashier");
-    int myIndex;
     DBConnection conn = new DBConnection();
     Connection conDB = conn.getConnection();
     PreparedStatement pst;
