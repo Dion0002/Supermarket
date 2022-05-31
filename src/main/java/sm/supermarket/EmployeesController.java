@@ -262,7 +262,6 @@ public class EmployeesController implements Initializable {
                             rs.getString("Role"),
                             rs.getString("Salary")
 
-
                     ));
                 }
 
@@ -459,6 +458,8 @@ public class EmployeesController implements Initializable {
                 alert.setTitle("Update Employee");
                 alert.setContentText("Employee Updated");
                 alert.showAndWait();
+                empty();
+
 
 
             } catch (Exception e) {
@@ -467,8 +468,6 @@ public class EmployeesController implements Initializable {
 
             }
         }
-//
-
     }
 
 
@@ -491,6 +490,8 @@ public class EmployeesController implements Initializable {
         alert.setTitle("Delete Employee");
         alert.setContentText("Employee Deleted");
         alert.showAndWait();
+        empty();
+
 
     }
 

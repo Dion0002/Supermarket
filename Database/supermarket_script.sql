@@ -1,0 +1,1 @@
+Select * from item_category

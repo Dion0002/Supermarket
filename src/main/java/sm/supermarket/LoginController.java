@@ -1,9 +1,11 @@
 package sm.supermarket;
 
 
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 import com.jfoenix.controls.JFXButton;
@@ -11,12 +13,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -24,8 +29,7 @@ import javafx.stage.StageStyle;
 /**
  * This class handel all function and other things that will be needed for the user login
  */
-public class LoginController  {
-
+public class LoginController implements Initializable {
     @FXML
     private JFXButton btn_cancel;
 
@@ -39,10 +43,16 @@ public class LoginController  {
     private JFXButton btn_signUp;
 
     @FXML
+    private ImageView img_dontShowPass;
+
+    @FXML
     private ImageView img_logo;
 
     @FXML
     private ImageView img_pass;
+
+    @FXML
+    private ImageView img_seePass;
 
     @FXML
     private ImageView img_user;
@@ -68,8 +78,13 @@ public class LoginController  {
     @FXML
     private TextField tf_username;
 
+    @FXML
+    private TextField tf_showPass;
+
 
     private UserRole role=null;
+
+
 
 
     /**
@@ -261,4 +276,41 @@ public class LoginController  {
 
     }
 
+    String password;
+    @FXML
+    void HidePasswordOnAction(KeyEvent event) {
+        password = pf_password.getText();
+        tf_showPass.setText(password);
+    }
+
+    @FXML
+    void ShowPasswordOnAction(KeyEvent event) {
+        password = tf_showPass.getText();
+        pf_password.setText(password);
+    }
+
+    @FXML
+    void open_eye_onClicked(MouseEvent event) {
+        tf_showPass.setVisible(false);
+        img_seePass.setVisible(false);
+        img_dontShowPass.setVisible(true);
+        pf_password.setVisible(true);
+
+    }
+
+    @FXML
+    void closed_eye_Onclicked(MouseEvent event) {
+        tf_showPass.setVisible(true);
+        img_seePass.setVisible(true);
+        img_dontShowPass.setVisible(false);
+        pf_password.setVisible(false);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tf_showPass.setVisible(false);
+        img_seePass.setVisible(false);
+
+    }
 }

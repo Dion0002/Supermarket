@@ -51,11 +51,11 @@
             <TableColumn fx:id="column_salary" prefWidth="91.0" text="Salary" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btn_add" layoutX="716.0" layoutY="107.0" onAction="#addBtn" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: AAE41B;" text="ADD" />
+      <JFXButton fx:id="btn_add" layoutX="716.0" layoutY="107.0" onAction="#addBtn" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: AAE41B; -fx-background-radius: 50;" text="ADD" />
       <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="168.0" text="Phone Number" />
       <TextField fx:id="tf_phoneNo" layoutX="193.0" layoutY="189.0" prefHeight="26.0" prefWidth="150.0" />
-      <JFXButton fx:id="btn_update" layoutX="716.0" layoutY="158.0" onAction="#updateEmployee" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #14f4d4;" text="UPDATE" />
-      <JFXButton fx:id="btn_delete" layoutX="716.0" layoutY="210.0" onAction="#deleteBtn" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #ff3300;" text="DELETE" />
+      <JFXButton fx:id="btn_update" layoutX="716.0" layoutY="158.0" onAction="#updateEmployee" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #14f4d4; -fx-background-radius: 50;" text="UPDATE" />
+      <JFXButton fx:id="btn_delete" layoutX="716.0" layoutY="210.0" onAction="#deleteBtn" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #ff3300; -fx-background-radius: 50;" text="DELETE" />
       <TextField fx:id="tf_search" alignment="CENTER" layoutX="637.0" layoutY="45.0" prefHeight="25.0" prefWidth="282.0" promptText="Search" />
       <Label fx:id="lbl_role" layoutX="196.0" layoutY="223.0" text="Role" />
       <JFXComboBox fx:id="cb_role" layoutX="192.0" layoutY="250.0" prefHeight="25.0" prefWidth="150.0" promptText="Select" />
