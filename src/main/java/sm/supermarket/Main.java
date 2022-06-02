@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -18,9 +19,9 @@ public class Main extends Application {
 //        stage.setScene(scene);
 //        stage.show();
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-
+        Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.show();
 
     }

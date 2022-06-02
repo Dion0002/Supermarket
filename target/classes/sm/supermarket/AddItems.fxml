@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.AddItemsController">
    <children>
-      <Pane layoutY="1.0" prefHeight="600.0" prefWidth="400.0">
+      <Pane layoutY="1.0" prefHeight="600.0" prefWidth="400.0" stylesheets="@addItems.css">
          <children>
             <Label fx:id="lbl_addItemCategory" layoutX="55.0" layoutY="23.0" text="ADD ITEM CATEGORY">
                <font>
@@ -31,9 +31,9 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" />
-            <TextField fx:id="tf_itmcategory" layoutX="138.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" />
-            <TextArea fx:id="ta_categDes" layoutX="138.0" layoutY="191.0" prefHeight="93.0" prefWidth="200.0" />
+            <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
+            <TextField fx:id="tf_itmcategory" alignment="CENTER" layoutX="138.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" promptText="Category" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
+            <TextArea fx:id="ta_categDes" layoutX="138.0" layoutY="191.0" prefHeight="93.0" prefWidth="200.0" promptText="Description" style="-fx-border-color: #c6c6c6; -fx-background-color: FAFF91;-fx-border-width: 2;" />
             <TableView fx:id="tbl_category" layoutX="14.0" layoutY="314.0" prefHeight="200.0" prefWidth="357.0">
               <columns>
                 <TableColumn fx:id="column_catID" prefWidth="106.0" text="ID" />
@@ -47,14 +47,14 @@
             <Label fx:id="lbl_categoryID" layoutX="17.0" layoutY="292.0" textFill="#faff91" />
          </children>
       </Pane>
-      <Pane layoutX="400.0" layoutY="1.0" prefHeight="600.0" prefWidth="600.0">
+      <Pane layoutX="400.0" layoutY="1.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@addItems.css">
          <children>
             <Label fx:id="lbl_addItem" layoutX="232.0" layoutY="25.0" text="ADD ITEM">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_searchItem" alignment="CENTER" layoutX="178.0" layoutY="83.0" prefHeight="25.0" prefWidth="244.0" promptText="SEARCH" />
+            <TextField fx:id="tf_searchItem" alignment="CENTER" layoutX="178.0" layoutY="83.0" prefHeight="25.0" prefWidth="244.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
             <Label fx:id="lbl_itemName" layoutX="26.0" layoutY="153.0" text="Item Name">
                <font>
                   <Font size="15.0" />
@@ -75,10 +75,10 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_itemName" layoutX="111.0" layoutY="151.0" prefHeight="25.0" prefWidth="167.0" />
-            <TextField fx:id="tf_qunatity" layoutX="111.0" layoutY="209.0" prefHeight="25.0" prefWidth="167.0" />
-            <TextField fx:id="tf_price" layoutX="377.0" layoutY="151.0" prefHeight="25.0" prefWidth="167.0" />
-            <TextArea fx:id="ta_descriptionItem" layoutX="379.0" layoutY="209.0" prefHeight="69.0" prefWidth="200.0" />
+            <TextField fx:id="tf_itemName" alignment="CENTER" layoutX="111.0" layoutY="151.0" prefHeight="25.0" prefWidth="167.0" promptText="Name" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
+            <TextField fx:id="tf_qunatity" alignment="CENTER" layoutX="111.0" layoutY="209.0" prefHeight="25.0" prefWidth="167.0" promptText="Quantity" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
+            <TextField fx:id="tf_price" alignment="CENTER" layoutX="377.0" layoutY="151.0" prefHeight="25.0" prefWidth="167.0" promptText="Price" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" />
+            <TextArea fx:id="ta_descriptionItem" layoutX="379.0" layoutY="209.0" prefHeight="69.0" prefWidth="200.0" promptText="Description"  style="-fx-border-color: #c6c6c6; -fx-background-color: FAFF91;-fx-border-width: 2;"  />
             <TableView fx:id="tbl_itemes" layoutX="44.0" layoutY="312.0" prefHeight="200.0" prefWidth="529.0">
                <columns>
                   <TableColumn fx:id="column_ItemID" prefWidth="51.0" text="ID" />
