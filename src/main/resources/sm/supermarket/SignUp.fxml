@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FAFF91;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.SignUpController">
+<AnchorPane  stylesheets="@signup.css" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FAFF91;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.SignUpController">
    <children>
-      <AnchorPane prefHeight="71.0" prefWidth="600.0" style="-fx-background-color: AAE41B;">
+      <AnchorPane prefHeight="71.0" prefWidth="600.0" style="-fx-background-color: AAE41B;" stylesheets="@signup.css">
          <children>
             <ImageView fx:id="img_userLogo" fitHeight="47.0" fitWidth="48.0" layoutX="34.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,12 +29,12 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tf_firstname" alignment="CENTER" layoutX="47.0" layoutY="99.0" prefHeight="26.0" prefWidth="175.0" promptText="Firstname">
+      <TextField styleClass="firstname_sign" fx:id="tf_firstname" alignment="CENTER" layoutX="47.0" layoutY="99.0" prefHeight="26.0" prefWidth="175.0" promptText="Firstname">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="tf_lastname" alignment="CENTER" layoutX="47.0" layoutY="151.0" prefHeight="26.0" prefWidth="175.0" promptText="Lastname">
+      <TextField styleClass="lastname_sign" fx:id="tf_lastname" alignment="CENTER" layoutX="47.0" layoutY="151.0" prefHeight="26.0" prefWidth="175.0" promptText="Lastname">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -53,22 +53,22 @@
          </font>
       </JFXRadioButton>
       <DatePicker fx:id="dp_dob" layoutX="47.0" layoutY="227.0" promptText="Date of Birth" />
-      <TextArea fx:id="ta_address" layoutX="47.0" layoutY="274.0" prefHeight="98.0" prefWidth="175.0" promptText="Address">
+      <TextArea styleClass="address_sign" fx:id="ta_address" layoutX="47.0" layoutY="274.0" prefHeight="98.0" prefWidth="175.0" promptText="Address">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </TextArea>
-      <TextField fx:id="tf_username" alignment="CENTER" layoutX="362.0" layoutY="153.0" prefHeight="26.0" prefWidth="175.0" promptText="Username">
+      <TextField styleClass="username_sign" fx:id="tf_username" alignment="CENTER" layoutX="362.0" layoutY="153.0" prefHeight="26.0" prefWidth="175.0" promptText="Username">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="362.0" layoutY="204.0" prefHeight="26.0" prefWidth="175.0" promptText="Password">
+      <PasswordField styleClass="password_sign" fx:id="pf_password" alignment="CENTER" layoutX="362.0" layoutY="204.0" prefHeight="26.0" prefWidth="175.0" promptText="Password">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="pf_confPass" alignment="CENTER" layoutX="362.0" layoutY="251.0" prefHeight="26.0" prefWidth="175.0" promptText="Confirm Password">
+      <PasswordField styleClass="password_confirm_sign" fx:id="pf_confPass" alignment="CENTER" layoutX="362.0" layoutY="251.0" prefHeight="26.0" prefWidth="175.0" promptText="Confirm Password">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -133,7 +133,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="363.0" layoutY="101.0" prefHeight="26.0" prefWidth="175.0" promptText="Phone Number">
+      <TextField styleClass="phone_number_sign" fx:id="tf_phoneNo" alignment="CENTER" layoutX="363.0" layoutY="101.0" prefHeight="26.0" prefWidth="175.0" promptText="Phone Number">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>

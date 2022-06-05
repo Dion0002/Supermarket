@@ -67,9 +67,6 @@ public class AdminSideBarController implements Initializable {
     private ImageView img_logout;
 
     @FXML
-    private ImageView img_reports;
-
-    @FXML
     private ImageView img_staff;
 
     @FXML
@@ -81,12 +78,6 @@ public class AdminSideBarController implements Initializable {
     @FXML
     private void add_item(MouseEvent event) {
         loadPage("AddItems");
-
-    }
-
-    @FXML
-    private void all_reports(MouseEvent event) {
-        loadPage("Reports");
 
     }
 

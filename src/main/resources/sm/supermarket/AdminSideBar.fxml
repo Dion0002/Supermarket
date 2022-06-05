@@ -37,7 +37,7 @@
                   <Insets top="2.0" />
                </VBox.margin>
             </Label>
-            <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="70.0" prefWidth="170.0" text="DASHBOARD" textFill="#faff91" textOverrun="CLIP">
+            <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="91.0" prefWidth="170.0" text="DASHBOARD" textFill="#faff91" textOverrun="CLIP">
                <VBox.margin>
                   <Insets top="4.0" />
                </VBox.margin>
@@ -52,7 +52,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btn_employees" onMouseClicked="#employees" prefHeight="70.0" prefWidth="170.0" text="EMPLOYEES" textFill="#faff91">
+            <JFXButton fx:id="btn_employees" onMouseClicked="#employees" prefHeight="80.0" prefWidth="170.0" text="EMPLOYEES" textFill="#faff91">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -67,22 +67,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btn_allbuttons" onMouseClicked="#all_reports" prefHeight="70.0" prefWidth="170.0" text="ALL REPORTS" textFill="#faff91">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_reports" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/combo_chart_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btn_customer" onMouseClicked="#customer" prefHeight="70.0" prefWidth="170.0" text="CUSTOMERS" textFill="#faff91">
+            <JFXButton fx:id="btn_customer" onMouseClicked="#customer" prefHeight="86.0" prefWidth="170.0" text="CUSTOMERS" textFill="#faff91">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -97,7 +82,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btn_addItem" onMouseClicked="#add_item" prefHeight="70.0" prefWidth="170.0" text="ADD ITEMS" textFill="#faff91">
+            <JFXButton fx:id="btn_addItem" onMouseClicked="#add_item" prefHeight="81.0" prefWidth="170.0" text="ADD ITEMS" textFill="#faff91">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
