@@ -18,7 +18,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import static javafx.scene.paint.Color.TRANSPARENT;
 public class AdminSideBarController implements Initializable {
 
     @FXML
@@ -102,11 +102,13 @@ public class AdminSideBarController implements Initializable {
     @FXML
     private void logout(MouseEvent event) {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
             Stage LoginPage = new Stage();
-            LoginPage.initStyle(StageStyle.UNDECORATED);
-            LoginPage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            LoginPage.initStyle(StageStyle.TRANSPARENT);
+            LoginPage.setScene(scene);
             LoginPage.show();
+            scene.setFill(TRANSPARENT);
 
         }catch (Exception e){
             e.printStackTrace();

@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static javafx.scene.paint.Color.TRANSPARENT;
+
 
 public class Main extends Application {
     @Override
@@ -18,11 +22,14 @@ public class Main extends Application {
 //        stage.initStyle(StageStyle.UNDECORATED);
 //        stage.setScene(scene);
 //        stage.show();
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
         Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
+        scene.setFill(TRANSPARENT);
+//        stage.initStyle(StageStyle.UNDECORATED);
+
 
     }
 

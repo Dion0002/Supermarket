@@ -226,7 +226,7 @@ public class EmployeesController implements Initializable {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter Into The Fileds");
+            alert.setContentText("Please Enter Into The Fields");
             alert.showAndWait();
 
             return false;

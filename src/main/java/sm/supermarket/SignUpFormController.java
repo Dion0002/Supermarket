@@ -16,9 +16,11 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.time.LocalDate;
 
+import static javafx.scene.control.Alert.AlertType.INFORMATION;
+import static javafx.scene.control.Alert.AlertType.WARNING;
+import static javafx.scene.paint.Color.TRANSPARENT;
 
-public class SignUpController {
-
+public class SignUpFormController {
 
     @FXML
     private JFXButton btn_goback;
@@ -39,9 +41,6 @@ public class SignUpController {
     private ImageView img_confP;
 
     @FXML
-    private ImageView img_confP1;
-
-    @FXML
     private ImageView img_dob;
 
     @FXML
@@ -57,34 +56,28 @@ public class SignUpController {
     private ImageView img_pass;
 
     @FXML
+    private ImageView img_phoneNumber;
+
+    @FXML
     private ImageView img_user;
 
     @FXML
     private ImageView img_userLogo;
 
     @FXML
-    private ImageView img_phoneNumber;
+    private Label lbl_userrole;
 
     @FXML
-    private Label lbl_confpasserror;
+    private TextField pf_confPass;
 
     @FXML
-    private Label lbl_regsucc;
-
-    @FXML
-    private Label lbl_userReg;
-
-    @FXML
-    private PasswordField pf_confPass;
-
-    @FXML
-    private PasswordField pf_password;
-
-    @FXML
-    private JFXRadioButton rb_female;
+    private TextField pf_password;
 
     @FXML
     private JFXRadioButton rb_male;
+
+    @FXML
+    private JFXRadioButton rb_female;
 
     @FXML
     private TextArea ta_address;
@@ -96,13 +89,10 @@ public class SignUpController {
     private TextField tf_lastname;
 
     @FXML
-    private TextField tf_username;
-
-    @FXML
     private TextField tf_phoneNo;
 
     @FXML
-    private Label lbl_userrole;
+    private TextField tf_username;
 
     /**
      * This is for the goback button to open the login page
@@ -111,11 +101,13 @@ public class SignUpController {
      */
     public void GoBackButton(ActionEvent event) {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
             Stage LoginPage = new Stage();
-            LoginPage.initStyle(StageStyle.UNDECORATED);
-            LoginPage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            LoginPage.initStyle(StageStyle.TRANSPARENT);
+            LoginPage.setScene(scene);
             LoginPage.show();
+            scene.setFill(TRANSPARENT);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -129,18 +121,41 @@ public class SignUpController {
     }
 
 
+
     /**
      * Checking if the user password is equal with the confirmation password
      *
      * @param event
      */
     public void registrionButton(ActionEvent event) {
-        uservalidation();
-        if (pf_password.getText().equals(pf_confPass.getText())) {
-            lbl_confpasserror.setText("");
+
+        if (!(pf_password.getText().equals(pf_confPass.getText()))) {
+            Alert alert = new Alert(WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Password are not the same");
+            alert.showAndWait();
 
         } else {
-            lbl_confpasserror.setText("*");
+            uservalidation();
+            Stage stage = (Stage) btn_login.getScene().getWindow();
+            stage.close();
+            login();
+        }
+
+    }
+
+    public void login(){
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+            Stage Loggedstage = new Stage();
+            Loggedstage.initStyle(StageStyle.UNDECORATED);
+            Loggedstage.setScene(new Scene(root));
+            Loggedstage.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
         }
 
     }
@@ -197,5 +212,5 @@ public class SignUpController {
     }
 
 
-}
 
+}

@@ -1,40 +1,37 @@
 package sm.supermarket;
 
-
-import java.net.URL;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
-
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
-/**
- * This class handel all function and other things that will be needed for the user login
- */
-public class LoginController implements Initializable {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.scene.image.ImageView;
+
+import static javafx.scene.paint.Color.TRANSPARENT;
+
+public class LoginFromController implements Initializable {
     @FXML
     private JFXButton btn_cancel;
-
-    @FXML
-    private JFXButton btn_forgot;
 
     @FXML
     private JFXButton btn_login;
@@ -46,45 +43,24 @@ public class LoginController implements Initializable {
     private ImageView img_dontShowPass;
 
     @FXML
-    private ImageView img_logo;
-
-    @FXML
-    private ImageView img_pass;
-
-    @FXML
     private ImageView img_seePass;
-
-    @FXML
-    private ImageView img_user;
-
-    @FXML
-    private Label lb_Fast;
 
     @FXML
     private Label lbl_invalid;
 
     @FXML
-    private Label lbl_market;
-
-    @FXML
-    private Label lbl_or;
-
-    @FXML
-    private Label lbl_signin;
+    private AnchorPane loginpage;
 
     @FXML
     private PasswordField pf_password;
 
     @FXML
-    private TextField tf_username;
-
-    @FXML
     private TextField tf_showPass;
 
+    @FXML
+    private TextField tf_username;
 
     private UserRole role=null;
-
-
 
 
     /**
@@ -98,7 +74,6 @@ public class LoginController implements Initializable {
     //Create a list for the user
     List<UserRole> ListLogin = new ArrayList<UserRole>();
 
-
     /**
      * This is for the login button to open specific page for the users
      * If user enter his/her credentials that depending on those this function determine what page to open
@@ -107,21 +82,20 @@ public class LoginController implements Initializable {
      */
     public void  loginButtonOnAction(ActionEvent event){
 
-       if((tf_username.getText().isBlank()==true && pf_password.getText().isBlank()==true)||
-               (tf_username.getText().isBlank()==true || pf_password.getText().isBlank()==true) ){
+        if((tf_username.getText().isBlank()==true && pf_password.getText().isBlank()==true)||
+                (tf_username.getText().isBlank()==true || pf_password.getText().isBlank()==true) ){
 
-           lbl_invalid.setText("Please enter username and password");
+            lbl_invalid.setText("Please enter username and password");
 
 
-       }else if(auth()==true){
-       }
-       else{
-           lbl_invalid.setText("Incorrect username or password");
+        }else if(auth()==true){
+        }
+        else{
+            lbl_invalid.setText("Incorrect username or password");
 
-       }
+        }
 
     }
-
     /**
      * User Authentication
      * Open specific page for the users
@@ -145,7 +119,7 @@ public class LoginController implements Initializable {
         }catch(Exception e){
 
         }
-       return false;
+        return false;
     }
 
 
@@ -169,24 +143,24 @@ public class LoginController implements Initializable {
                 "' and Password ='" + pf_password.getText() + "'";
 
 
-         try{
-             Statement statement = conDB.createStatement();
-             ResultSet queryResult = statement.executeQuery(verifyLogin);
+        try{
+            Statement statement = conDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyLogin);
 
-             while(queryResult.next()){
-                 UserRole ur = new UserRole();
+            while(queryResult.next()){
+                UserRole ur = new UserRole();
 
-                     ur.setUsername(queryResult.getString("username"));
-                     ur.setPassword(queryResult.getString("password"));
-                     ur.setRole(queryResult.getString("role"));
-                     logLogin.add(ur);
-             }
+                ur.setUsername(queryResult.getString("username"));
+                ur.setPassword(queryResult.getString("password"));
+                ur.setRole(queryResult.getString("role"));
+                logLogin.add(ur);
+            }
 
-         }catch (Exception e){
-             e.printStackTrace();
-             e.getCause();
-         }
-         return logLogin;
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return logLogin;
     }
 
 
@@ -207,11 +181,14 @@ public class LoginController implements Initializable {
      */
     public void SignUP(){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("SignUpForm.fxml"));
             Stage SignUPstage = new Stage();
-            SignUPstage.initStyle(StageStyle.UNDECORATED);
-            SignUPstage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            SignUPstage.initStyle(StageStyle.TRANSPARENT);
+            SignUPstage.setScene(scene);
             SignUPstage.show();
+            scene.setFill(TRANSPARENT);
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -309,8 +286,9 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tf_showPass.setVisible(false);
-        img_seePass.setVisible(false);
-
+            tf_showPass.setVisible(false);
+            img_seePass.setVisible(false);
     }
 }
+
+
