@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="787.0" prefWidth="936.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.LoginFromController">
+   <children>
+      <AnchorPane layoutX="23.0" layoutY="34.0" prefHeight="519.0" prefWidth="606.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="47.0">
+         <children>
+            <AnchorPane fx:id="loginpage" layoutX="327.0" layoutY="32.0" prefHeight="599.0" prefWidth="551.0" style="-fx-background-color: FAFF91; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="32.0">
+               <children>
+                  <Label layoutX="105.0" layoutY="62.0" prefHeight="67.0" prefWidth="244.0" text="WELCOME BACK" textFill="#aae41b">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="105.0" layoutY="116.0" prefHeight="27.0" prefWidth="200.0" text="Sign In To Continue" textFill="#aae41b" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="116.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_username" alignment="CENTER" layoutX="142.0" layoutY="202.0" prefHeight="40.0" prefWidth="269.0" promptText="Username" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="117.0" />
+                  <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="142.0" layoutY="292.0" onKeyReleased="#HidePasswordOnAction" prefHeight="40.0" prefWidth="269.0" promptText="Password" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="117.0" />
+                  <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="159.0" layoutY="406.0" onAction="#loginButtonOnAction" prefHeight="67.0" prefWidth="229.0" ripplerFill="WHITE" style="-fx-background-color: AAE41B; -fx-background-radius: 30;" text="Login" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="73.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/user_30px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="73.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/lock_32px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="54.0" fitWidth="80.0" layoutX="57.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/buying_64px.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="btn_cancel" buttonType="RAISED" layoutX="161.0" layoutY="494.0" onAction="#cancelButton" prefHeight="67.0" prefWidth="229.0" ripplerFill="WHITE" style="-fx-background-color: AAE41B; -fx-background-radius: 30;" text="Cancel" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="lbl_invalid" alignment="CENTER" layoutX="143.0" layoutY="355.0" prefHeight="27.0" prefWidth="292.0" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_showPass" alignment="CENTER" layoutX="141.0" layoutY="292.0" onKeyReleased="#ShowPasswordOnAction" prefHeight="40.0" prefWidth="292.0" promptText="Password" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;" />
+                  <ImageView fx:id="img_seePass" fitHeight="27.0" fitWidth="30.0" layoutX="403.0" layoutY="299.0" onMouseClicked="#open_eye_onClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/see_pass.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="img_dontShowPass" fitHeight="27.0" fitWidth="30.0" layoutX="403.0" layoutY="299.0" onMouseClicked="#closed_eye_Onclicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/invisible_30px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect></AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="-26.0" prefHeight="714.0" prefWidth="334.0" style="-fx-background-color: AAE41B; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="-26.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <ImageView fitHeight="191.0" fitWidth="194.0" layoutX="75.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/buying_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="137.0" layoutY="445.0" text="Fast" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="108.0" layoutY="496.0" text="Market" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btn_signUp" buttonType="RAISED" layoutX="50.0" layoutY="583.0" onAction="#SignUpButton" prefHeight="67.0" prefWidth="229.0" ripplerFill="WHITE" style="-fx-background-color: FAFF91; -fx-background-radius: 30;" text="SignUP" textFill="#aae41b">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

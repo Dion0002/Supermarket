@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: transparent; " xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.SignUpFormController">
+   <children>
+<AnchorPane layoutX="25.0" layoutY="25.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: FAFF91; -fx-background-radius: 20;">
+   <effect>
+      <DropShadow />
+   </effect>
+   <children>
+      <Label layoutX="187.0" layoutY="28.0" text="User Registration" textFill="#aae41b">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_firstname" alignment="CENTER" layoutX="49.0" layoutY="113.0" prefHeight="30.0" prefWidth="225.0" promptText="Firstname" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_lastname" alignment="CENTER" layoutX="49.0" layoutY="187.0" prefHeight="30.0" prefWidth="225.0" promptText="Lastname" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="351.0" layoutY="113.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_username" alignment="CENTER" layoutX="351.0" layoutY="187.0" prefHeight="30.0" prefWidth="225.0" promptText="Useername" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <JFXRadioButton fx:id="rb_male" layoutX="56.0" layoutY="270.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="rb_female" layoutX="169.0" layoutY="270.0" text="Female" toggleGroup="$gender">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXRadioButton>
+      <DatePicker fx:id="dp_dob" layoutX="49.0" layoutY="339.0" prefHeight="30.0" prefWidth="225.0" promptText="Date of Birth" />
+      <TextArea fx:id="ta_address" layoutX="49.0" layoutY="409.0" prefHeight="128.0" prefWidth="225.0" promptText="Address">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextArea>
+      <JFXButton fx:id="btn_login" alignment="CENTER" buttonType="RAISED" layoutX="351.0" layoutY="426.0" onAction="#registrionButton" prefHeight="54.0" prefWidth="225.0" ripplerFill="BLACK" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="Login" textFill="#faff91">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btn_goback" alignment="CENTER" buttonType="RAISED" layoutX="351.0" layoutY="500.0" onAction="#GoBackButton" prefHeight="54.0" prefWidth="225.0" ripplerFill="BLACK" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="Go Back" textFill="#faff91">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="img_userLogo" fitHeight="69.0" fitWidth="78.0" layoutX="95.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/add_user_male_26px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_firstname" fitHeight="32.0" fitWidth="28.0" layoutX="10.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/customer_30px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_lastname" fitHeight="32.0" fitWidth="28.0" layoutX="10.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/customer_30px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_gender" fitHeight="32.0" fitWidth="28.0" layoutX="10.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/gender_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_dob" fitHeight="32.0" fitWidth="28.0" layoutX="10.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/birthday_date_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_add" fitHeight="32.0" fitWidth="28.0" layoutX="10.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/address_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_phoneNumber" fitHeight="32.0" fitWidth="28.0" layoutX="308.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/phone_26px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_user" fitHeight="32.0" fitWidth="28.0" layoutX="308.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/customer_30px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_pass" fitHeight="32.0" fitWidth="28.0" layoutX="308.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/lock_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_confP" fitHeight="32.0" fitWidth="28.0" layoutX="308.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/lock_32px.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_userrole" layoutX="548.0" layoutY="77.0" text="Customer" textFill="#faff91" />
+            <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="351.0" layoutY="273.0" prefHeight="30.0" prefWidth="225.0" promptText="Password" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="pf_confPass" alignment="CENTER" layoutX="351.0" layoutY="338.0" prefHeight="30.0" prefWidth="225.0" promptText="Confirm Password" style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </PasswordField>
+   </children>
+</AnchorPane>
+   </children>
+</AnchorPane>
