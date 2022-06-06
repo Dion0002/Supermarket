@@ -1,118 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<BorderPane fx:id="BoardPaneAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: FAFF91;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.AdminSideBarController">
-   <left>
-      <VBox fx:id="hbox_left" alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="170.0" style="-fx-background-color: AAE41B; -fx-background-radius: 0 30 30 0;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="img_logo" fitHeight="109.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/buying_64px.png" />
-               </image>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </ImageView>
-            <Label fx:id="lbl_fast" text="Fast" textFill="#faff91">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="25.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="lbl_market" text="Market" textFill="#faff91">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="25.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="2.0" />
-               </VBox.margin>
-            </Label>
-            <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="91.0" prefWidth="170.0" text="DASHBOARD" textFill="#faff91" textOverrun="CLIP">
-               <VBox.margin>
-                  <Insets top="4.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_dash" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/dashboard_26px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btn_employees" onMouseClicked="#employees" prefHeight="80.0" prefWidth="170.0" text="EMPLOYEES" textFill="#faff91">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_staff" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/staff_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btn_customer" onMouseClicked="#customer" prefHeight="86.0" prefWidth="170.0" text="CUSTOMERS" textFill="#faff91">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_customer" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/customer_26px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btn_addItem" onMouseClicked="#add_item" prefHeight="81.0" prefWidth="170.0" text="ADD ITEMS" textFill="#faff91">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_addItem" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/replicate_rows_24px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btn_logout" onMouseClicked="#logout" prefHeight="70.0" prefWidth="170.0" text="LOGOUT" textFill="#faff91">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fx:id="img_logout" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/Logout_30px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="15.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </VBox>
-   </left>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="BoardPaneAdmin" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0"
+            style="-fx-background-color: FAFF91;" xmlns="http://javafx.com/javafx/18"
+            fx:controller="sm.supermarket.AdminSideBarController">
+    <left>
+        <VBox fx:id="hbox_left" alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0"
+              prefWidth="170.0" style="-fx-background-color: AAE41B; -fx-background-radius: 0 30 30 0;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="img_logo" fitHeight="109.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/buying_64px.png"/>
+                    </image>
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ImageView>
+                <Label fx:id="lbl_fast" text="Fast" textFill="#faff91">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="25.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets top="7.0"/>
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="lbl_market" text="Market" textFill="#faff91">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="25.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets top="2.0"/>
+                    </VBox.margin>
+                </Label>
+                <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="91.0" prefWidth="170.0"
+                           text="DASHBOARD" textFill="#faff91" textOverrun="CLIP">
+                    <VBox.margin>
+                        <Insets top="4.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fx:id="img_dash" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/dashboard_26px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="btn_employees" onMouseClicked="#employees" prefHeight="80.0" prefWidth="170.0"
+                           text="EMPLOYEES" textFill="#faff91">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fx:id="img_staff" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/staff_32px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="btn_customer" onMouseClicked="#customer" prefHeight="86.0" prefWidth="170.0"
+                           text="CUSTOMERS" textFill="#faff91">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fx:id="img_customer" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/customer_26px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="btn_addItem" onMouseClicked="#add_item" prefHeight="81.0" prefWidth="170.0"
+                           text="ADD ITEMS" textFill="#faff91">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fx:id="img_addItem" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/replicate_rows_24px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="btn_logout" onMouseClicked="#logout" prefHeight="70.0" prefWidth="170.0" text="LOGOUT"
+                           textFill="#faff91">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fx:id="img_logout" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/Logout_30px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0"/>
+                    </font>
+                </JFXButton>
+            </children>
+        </VBox>
+    </left>
 </BorderPane>

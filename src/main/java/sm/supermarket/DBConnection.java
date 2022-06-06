@@ -1,7 +1,7 @@
 package sm.supermarket;
 
 import java.sql.Connection;
-import  java.sql.DriverManager;
+import java.sql.DriverManager;
 
 /**
  * Database Connection
@@ -9,17 +9,17 @@ import  java.sql.DriverManager;
 public class DBConnection {
     public Connection databaseLink;
 
-    public Connection getConnection(){
-        String databaseName="supermarket";
-        String databaseUser="root";
-        String databasePassword="1234";
-        String url="jdbc:mysql://localhost/"+databaseName;
+    public Connection getConnection() {
+        String databaseName = "supermarket";
+        String databaseUser = "root";
+        String databasePassword = "1234";
+        String url = "jdbc:mysql://localhost/" + databaseName;
 
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink=DriverManager.getConnection(url,databaseUser,databasePassword);
+            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return databaseLink;

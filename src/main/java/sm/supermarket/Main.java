@@ -4,17 +4,19 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import static javafx.scene.paint.Color.TRANSPARENT;
 
 
 public class Main extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
@@ -31,9 +33,5 @@ public class Main extends Application {
 //        stage.initStyle(StageStyle.UNDECORATED);
 
 
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

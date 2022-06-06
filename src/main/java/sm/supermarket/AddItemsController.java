@@ -2,7 +2,6 @@ package sm.supermarket;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,122 +23,85 @@ import java.util.function.Predicate;
 
 public class AddItemsController implements Initializable {
 
-    @FXML
-    private JFXButton btn_addCategory;
-
-    @FXML
-    private JFXButton btn_addItem;
-
-    @FXML
-    private JFXButton btn_deleteCategory;
-
-    @FXML
-    private JFXButton btn_deleteItem;
-
-    @FXML
-    private JFXButton btn_updateCategory;
-
-    @FXML
-    private JFXButton btn_updateItem;
-
-    @FXML
-    private TableColumn<Items, String> column_itemPrice;
-
-    @FXML
-    private JFXComboBox<String> cmb_category;
-
-    @FXML
-    private TableColumn<ItemCategory, String> column_ItemCategory;
-
-    @FXML
-    private TableColumn<ItemCategory, String> column_catID;
-
-    @FXML
-    private TableColumn<ItemCategory, String> column_descript;
-
-    @FXML
-    private TableColumn<Items, String> column_ItemDescription;
-
-    @FXML
-    private TableColumn<Items, String> column_ItemID;
-
-    @FXML
-    private TableColumn<Items, String> column_ItemName;
-
-    @FXML
-    private TableColumn<Items, String> column_Category;
-
-    @FXML
-    private TableColumn<Items, String> column_itemQunatity;
-
-    @FXML
-    private Label lbl_categoryID;
-
-    @FXML
-    private Label lbl_itemID;
-
-    @FXML
-    private Label lbl_addItem;
-
-    @FXML
-    private Label lbl_addItemCategory;
-
-    @FXML
-    private Label lbl_catDescrip;
-
-    @FXML
-    private Label lbl_categoryItems;
-
-    @FXML
-    private Label lbl_decItem;
-
-    @FXML
-    private Label lbl_itemName;
-
-    @FXML
-    private Label lbl_itmCat;
-
-    @FXML
-    private Label lbl_price;
-
-    @FXML
-    private Label lbl_quantity;
-
-    @FXML
-    private TextArea ta_categDes;
-
-    @FXML
-    private TextArea ta_descriptionItem;
-
-    @FXML
-    private TableView<ItemCategory> tbl_category;
-
-    @FXML
-    private TableView<Items> tbl_itemes;
-
-    @FXML
-    private TextField tf_itemName;
-
-    @FXML
-    private TextField tf_itmcategory;
-
-    @FXML
-    private TextField tf_price;
-
-    @FXML
-    private TextField tf_qunatity;
-
-    @FXML
-    private TextField tf_searchItem;
-
-    @FXML
-    private TextField tf_searchcategory;
-
+    final ObservableList category = FXCollections.observableArrayList();
     DBConnection conn = new DBConnection();
     Connection conDB = conn.getConnection();
     PreparedStatement pst;
     ResultSet rs;
-    final ObservableList category = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton btn_addCategory;
+    @FXML
+    private JFXButton btn_addItem;
+    @FXML
+    private JFXButton btn_deleteCategory;
+    @FXML
+    private JFXButton btn_deleteItem;
+    @FXML
+    private JFXButton btn_updateCategory;
+    @FXML
+    private JFXButton btn_updateItem;
+    @FXML
+    private TableColumn<Items, String> column_itemPrice;
+    @FXML
+    private JFXComboBox<String> cmb_category;
+    @FXML
+    private TableColumn<ItemCategory, String> column_ItemCategory;
+    @FXML
+    private TableColumn<ItemCategory, String> column_catID;
+    @FXML
+    private TableColumn<ItemCategory, String> column_descript;
+    @FXML
+    private TableColumn<Items, String> column_ItemDescription;
+    @FXML
+    private TableColumn<Items, String> column_ItemID;
+    @FXML
+    private TableColumn<Items, String> column_ItemName;
+    @FXML
+    private TableColumn<Items, String> column_Category;
+    @FXML
+    private TableColumn<Items, String> column_itemQunatity;
+    @FXML
+    private Label lbl_categoryID;
+    @FXML
+    private Label lbl_itemID;
+    @FXML
+    private Label lbl_addItem;
+    @FXML
+    private Label lbl_addItemCategory;
+    @FXML
+    private Label lbl_catDescrip;
+    @FXML
+    private Label lbl_categoryItems;
+    @FXML
+    private Label lbl_decItem;
+    @FXML
+    private Label lbl_itemName;
+    @FXML
+    private Label lbl_itmCat;
+    @FXML
+    private Label lbl_price;
+    @FXML
+    private Label lbl_quantity;
+    @FXML
+    private TextArea ta_categDes;
+    @FXML
+    private TextArea ta_descriptionItem;
+    @FXML
+    private TableView<ItemCategory> tbl_category;
+    @FXML
+    private TableView<Items> tbl_itemes;
+    @FXML
+    private TextField tf_itemName;
+    @FXML
+    private TextField tf_itmcategory;
+    @FXML
+    private TextField tf_price;
+    @FXML
+    private TextField tf_qunatity;
+    @FXML
+    private TextField tf_searchItem;
+    @FXML
+    private TextField tf_searchcategory;
 
     @FXML
     void btn_AddCat(ActionEvent event) {
@@ -181,35 +143,33 @@ public class AddItemsController implements Initializable {
     }
 
 
-
-
     public void addCategory() {
 
 
         String ItemCategory = tf_itmcategory.getText();
         String Category_Description = ta_categDes.getText();
 
-            try {
+        try {
 
-                pst = conDB.prepareStatement("INSERT INTO item_category(Item_Category,Description) VALUES(?,?)");
-                pst.setString(1, ItemCategory);
-                pst.setString(2, Category_Description);
-                pst.executeUpdate();
+            pst = conDB.prepareStatement("INSERT INTO item_category(Item_Category,Description) VALUES(?,?)");
+            pst.setString(1, ItemCategory);
+            pst.setString(2, Category_Description);
+            pst.executeUpdate();
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Category");
-                alert.setTitle("Add Category");
-                alert.setContentText("Category Added");
-                alert.showAndWait();
-                cmbCateogry();
-                empty();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Category");
+            alert.setTitle("Add Category");
+            alert.setContentText("Category Added");
+            alert.showAndWait();
+            cmbCateogry();
+            empty();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
 
-            }
         }
+    }
 
     public void updateCateg() {
 
@@ -218,30 +178,30 @@ public class AddItemsController implements Initializable {
         String DescriptionCat = ta_categDes.getText();
 
 
-            try {
-                int id = Integer.parseInt(lbl_categoryID.getText());
-                String query = "Update item_category set Item_Category=?, Description=? Where ID ='" + id + "' ";
-                pst = conDB.prepareStatement(query);
-                pst.setString(1, Item_cat);
-                pst.setString(2, DescriptionCat);
-                pst.executeUpdate();
+        try {
+            int id = Integer.parseInt(lbl_categoryID.getText());
+            String query = "Update item_category set Item_Category=?, Description=? Where ID ='" + id + "' ";
+            pst = conDB.prepareStatement(query);
+            pst.setString(1, Item_cat);
+            pst.setString(2, DescriptionCat);
+            pst.executeUpdate();
 
 
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setHeaderText("Category Editing");
-                alert.setTitle("Update Category");
-                alert.setContentText("Category Updated");
-                alert.showAndWait();
-                cmbCateogry();
-                empty();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Category Editing");
+            alert.setTitle("Update Category");
+            alert.setContentText("Category Updated");
+            alert.showAndWait();
+            cmbCateogry();
+            empty();
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
 
-            }
         }
+    }
 
     public void deleteCateg() {
         int id = Integer.parseInt(lbl_categoryID.getText());
@@ -266,7 +226,6 @@ public class AddItemsController implements Initializable {
         empty();
 
     }
-
 
 
     public void addItem() {
@@ -302,8 +261,6 @@ public class AddItemsController implements Initializable {
 
         }
     }
-
-
 
 
     public void updateItem() {
@@ -368,19 +325,13 @@ public class AddItemsController implements Initializable {
     }
 
 
-
-
-
-
-
-
     public void cmbCateogry() {
         category.clear();
         String query = "select Item_Category from item_category";
         try {
             pst = conDB.prepareStatement(query);
             rs = pst.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 category.add(rs.getString("Item_Category"));
             }
             pst.close();
@@ -622,7 +573,8 @@ public class AddItemsController implements Initializable {
         tf_itmcategory.setText("");
         ta_categDes.setText("");
     }
-    public void emptyItem(){
+
+    public void emptyItem() {
         tf_itemName.setText("");
         tf_price.setText("");
         tf_qunatity.setText("");
@@ -630,12 +582,13 @@ public class AddItemsController implements Initializable {
         cmb_category.setValue("");
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-     table();
-     tableItem();
-     cmb_category.setItems(category);
-     cmbCateogry();
+        table();
+        tableItem();
+        cmb_category.setItems(category);
+        cmbCateogry();
 
     }
 }

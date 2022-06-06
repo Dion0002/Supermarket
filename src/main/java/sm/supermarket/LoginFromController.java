@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,162 +24,154 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.scene.image.ImageView;
 
 import static javafx.scene.paint.Color.TRANSPARENT;
 
 public class LoginFromController implements Initializable {
+    private final UserRole role = null;
+    public Employee employee;
+    //Create a list for the user
+    List<UserRole> ListLogin = new ArrayList<UserRole>();
+    String password;
     @FXML
     private JFXButton btn_cancel;
-
     @FXML
     private JFXButton btn_login;
-
     @FXML
     private JFXButton btn_signUp;
-
     @FXML
     private ImageView img_dontShowPass;
-
     @FXML
     private ImageView img_seePass;
-
     @FXML
     private Label lbl_invalid;
-
     @FXML
     private AnchorPane loginpage;
-
     @FXML
     private PasswordField pf_password;
-
     @FXML
     private TextField tf_showPass;
-
     @FXML
     private TextField tf_username;
 
-    private UserRole role=null;
-
-
     /**
      * This is for the cancel button to close the program
+     *
      * @param event
      */
     public void cancelButton(ActionEvent event) {
-        Stage stage = (Stage)  btn_cancel.getScene().getWindow();
+        Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
     }
-    //Create a list for the user
-    List<UserRole> ListLogin = new ArrayList<UserRole>();
 
     /**
      * This is for the login button to open specific page for the users
      * If user enter his/her credentials that depending on those this function determine what page to open
      * And check for user validation if username or password are incorrect.
+     *
      * @param event
      */
-    public void  loginButtonOnAction(ActionEvent event){
+    public void loginButtonOnAction(ActionEvent event) {
 
-        if((tf_username.getText().isBlank()==true && pf_password.getText().isBlank()==true)||
-                (tf_username.getText().isBlank()==true || pf_password.getText().isBlank()==true) ){
+        if ((tf_username.getText().isBlank() == true && pf_password.getText().isBlank() == true) ||
+                (tf_username.getText().isBlank() == true || pf_password.getText().isBlank() == true)) {
 
             lbl_invalid.setText("Please enter username and password");
 
 
-        }else if(auth()==true){
-        }
-        else{
+        } else if (auth() == true) {
+        } else {
             lbl_invalid.setText("Incorrect username or password");
 
         }
 
     }
+
     /**
      * User Authentication
      * Open specific page for the users
      * If user enter his/her credentials that depending on those this function determine what page to open
+     *
      * @return
      */
-    public boolean  auth(){
-        try{
+    public boolean auth() {
+        try {
             ListLogin = validateLogin(tf_username.getText(), pf_password.getText());
 
-            if(ListLogin.get(0).getRole().equalsIgnoreCase("admin")){
+            if (ListLogin.get(0).getRole().equalsIgnoreCase("admin")) {
                 AdminLog();
-            }else if(ListLogin.get(0).getRole().equalsIgnoreCase("cashier")){
+            } else if (ListLogin.get(0).getRole().equalsIgnoreCase("cashier")) {
                 CashLog();
-            }
-            else  {
+            } else {
                 CusLog();
             }
-            Stage stage = (Stage)  btn_login.getScene().getWindow();
+            Stage stage = (Stage) btn_login.getScene().getWindow();
             stage.close();
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
         return false;
     }
 
-
     /**
      * This is for getting the information from the database table and checking if the user input
      * is the same with that of the database
+     *
      * @param username
      * @param password
      * @return
      */
-    public List validateLogin(String username, String password){
+    public List validateLogin(String username, String password) {
         DBConnection conn = new DBConnection();
         Connection conDB = conn.getConnection();
         List logLogin = new ArrayList();
 
-
-
+        String Uname = tf_username.getText();
+        String Pass = pf_password.getText();
 
         //Enter the query for retrieving the info
-        String verifyLogin = "select Username, Password, Role from userlogin where Username ='"+tf_username.getText()+
-                "' and Password ='" + pf_password.getText() + "'";
+        String verifyLogin = "select Username, Password, Role from userlogin where Username ='" + Uname +
+                "' and Password ='" + Pass + "'";
 
 
-        try{
+        try {
             Statement statement = conDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            ResultSet rs = statement.executeQuery(verifyLogin);
 
-            while(queryResult.next()){
+            while (rs.next()) {
                 UserRole ur = new UserRole();
+                ur.setUsername(rs.getString("username"));
+                ur.setPassword(rs.getString("password"));
+                ur.setRole(rs.getString("role"));
+                Uname = rs.getString("username");
+                UserRole.username = Uname;
 
-                ur.setUsername(queryResult.getString("username"));
-                ur.setPassword(queryResult.getString("password"));
-                ur.setRole(queryResult.getString("role"));
                 logLogin.add(ur);
+
+
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
         return logLogin;
     }
 
-
-
-
-
-
     /**
      * SingUp button that call the singup method
+     *
      * @param event
      */
-    public void SignUpButton(ActionEvent event){
+    public void SignUpButton(ActionEvent event) {
         SignUP();
     }
 
     /**
      * Open SignUp page
      */
-    public void SignUP(){
-        try{
+    public void SignUP() {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("SignUpForm.fxml"));
             Stage SignUPstage = new Stage();
             Scene scene = new Scene(root);
@@ -190,7 +181,7 @@ public class LoginFromController implements Initializable {
             scene.setFill(TRANSPARENT);
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -202,15 +193,15 @@ public class LoginFromController implements Initializable {
     /**
      * Open Admin Page
      */
-    public void AdminLog(){
-        try{
+    public void AdminLog() {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("AdminSideBar.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));
             Loggedstage.show();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -220,15 +211,16 @@ public class LoginFromController implements Initializable {
     /**
      * Open Customer Page
      */
-    public  void CusLog(){
-        try{
+    public void CusLog() {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));
             Loggedstage.show();
 
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -238,22 +230,24 @@ public class LoginFromController implements Initializable {
     /**
      * Open Cashier Page
      */
-    public  void CashLog(){
-        try{
+    public void CashLog() {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("CashierPage.fxml"));
             Stage Loggedstage = new Stage();
-            Loggedstage.initStyle(StageStyle.UNDECORATED);
-            Loggedstage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            Loggedstage.initStyle(StageStyle.TRANSPARENT);
+            Loggedstage.setScene(scene);
             Loggedstage.show();
+            scene.setFill(TRANSPARENT);
 
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
 
     }
 
-    String password;
     @FXML
     void HidePasswordOnAction(KeyEvent event) {
         password = pf_password.getText();
@@ -286,8 +280,8 @@ public class LoginFromController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            tf_showPass.setVisible(false);
-            img_seePass.setVisible(false);
+        tf_showPass.setVisible(false);
+        img_seePass.setVisible(false);
     }
 }
 

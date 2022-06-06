@@ -16,9 +16,7 @@ public class Employee {
     private final SimpleStringProperty salary;
 
 
-
-
-    public Employee(String id,String fname, String lname,String Dob,String gender, String address, String phoneNr,String username, String password ,String role,String salary) {
+    public Employee(String id, String fname, String lname, String Dob, String gender, String address, String phoneNr, String username, String password, String role, String salary) {
         this.ID = new SimpleStringProperty(id);
         this.firstname = new SimpleStringProperty(fname);
         this.lastname = new SimpleStringProperty(lname);
@@ -34,91 +32,92 @@ public class Employee {
 
     }
 
+
     public String getID() {
         return ID.get();
-    }
-
-    public SimpleStringProperty IDProperty() {
-        return ID;
     }
 
     public void setID(String ID) {
         this.ID.set(ID);
     }
 
-    public String getFirstname() {
-        return firstname.get();
+    public SimpleStringProperty IDProperty() {
+        return ID;
     }
 
-    public SimpleStringProperty firstnameProperty() {
-        return firstname;
+    public String getFirstname() {
+        return firstname.get();
     }
 
     public void setFirstname(String firstname) {
         this.firstname.set(firstname);
     }
 
-    public String getLastname() {
-        return lastname.get();
+    public SimpleStringProperty firstnameProperty() {
+        return firstname;
     }
 
-    public SimpleStringProperty lastnameProperty() {
-        return lastname;
+    public String getLastname() {
+        return lastname.get();
     }
 
     public void setLastname(String lastname) {
         this.lastname.set(lastname);
     }
 
-    public String getBirthday() {
-        return birthday.get();
+    public SimpleStringProperty lastnameProperty() {
+        return lastname;
     }
 
-    public SimpleStringProperty birthdayProperty() {
-        return birthday;
+    public String getBirthday() {
+        return birthday.get();
     }
 
     public void setBirthday(String birthday) {
         this.birthday.set(birthday);
     }
 
-    public String getGender() {
-        return gender.get();
+    public SimpleStringProperty birthdayProperty() {
+        return birthday;
     }
 
-    public SimpleStringProperty genderProperty() {
-        return gender;
+    public String getGender() {
+        return gender.get();
     }
 
     public void setGender(String gender) {
         this.gender.set(gender);
     }
 
-    public String getAddress() {
-        return address.get();
+    public SimpleStringProperty genderProperty() {
+        return gender;
     }
 
-    public SimpleStringProperty addressProperty() {
-        return address;
+    public String getAddress() {
+        return address.get();
     }
 
     public void setAddress(String address) {
         this.address.set(address);
     }
 
-    public String getPhonenumber() {
-        return phonenumber.get();
+    public SimpleStringProperty addressProperty() {
+        return address;
     }
 
-    public SimpleStringProperty phonenumberProperty() {
-        return phonenumber;
+    public String getPhonenumber() {
+        return phonenumber.get();
     }
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber.set(phonenumber);
     }
 
-    public String getUsername() {
+    public SimpleStringProperty phonenumberProperty() {
+        return phonenumber;
+    }
+
+    public String getUsername(String uname) {
         return username.get();
     }
 
@@ -134,16 +133,20 @@ public class Employee {
         return password.get();
     }
 
-    public SimpleStringProperty passwordProperty() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password.set(password);
     }
 
+    public SimpleStringProperty passwordProperty() {
+        return password;
+    }
+
     public String getRole() {
         return role.get();
+    }
+
+    public void setRole(String role) {
+        this.role.set(role);
     }
 
     public SimpleStringProperty roleProperty() {
@@ -154,15 +157,11 @@ public class Employee {
         return salary.get();
     }
 
-    public SimpleStringProperty salaryProperty() {
-        return salary;
-    }
-
     public void setSalary(String salary) {
         this.salary.set(salary);
     }
 
-    public void setRole(String role) {
-        this.role.set(role);
+    public SimpleStringProperty salaryProperty() {
+        return salary;
     }
 }

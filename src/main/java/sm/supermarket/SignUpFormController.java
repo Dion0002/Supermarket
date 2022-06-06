@@ -16,7 +16,6 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.time.LocalDate;
 
-import static javafx.scene.control.Alert.AlertType.INFORMATION;
 import static javafx.scene.control.Alert.AlertType.WARNING;
 import static javafx.scene.paint.Color.TRANSPARENT;
 
@@ -100,7 +99,7 @@ public class SignUpFormController {
      * @param event
      */
     public void GoBackButton(ActionEvent event) {
-        try{
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
             Stage LoginPage = new Stage();
             Scene scene = new Scene(root);
@@ -109,17 +108,15 @@ public class SignUpFormController {
             LoginPage.show();
             scene.setFill(TRANSPARENT);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
 
 
-
         Stage stage = (Stage) btn_goback.getScene().getWindow();
         stage.close();
     }
-
 
 
     /**
@@ -145,15 +142,15 @@ public class SignUpFormController {
 
     }
 
-    public void login(){
-        try{
+    public void login() {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));
             Loggedstage.show();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -172,6 +169,7 @@ public class SignUpFormController {
         String username = tf_username.getText();
         String password = pf_password.getText();
         String address = ta_address.getText();
+        String phone = tf_phoneNo.getText();
 
 
         JFXRadioButton selectedRB = (JFXRadioButton) gender.getSelectedToggle();
@@ -179,13 +177,10 @@ public class SignUpFormController {
 
         LocalDate locald = dp_dob.getValue();
 
-        String userrole= lbl_userrole.getText();
+        String userrole = lbl_userrole.getText();
 
 
-
-
-
-        String insertFields = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Role) VALUES ('";
+        String insertFields = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Phone,Role) VALUES ('";
         String inserValues = firstname + "','" + lastname + "','" +
                 username + "','" + password + "','" + togglevalue + "','" + address + "','" + locald + "','" + userrole + "')";
         String inserSingup = insertFields + inserValues;
@@ -194,7 +189,7 @@ public class SignUpFormController {
             Statement st = conDB.createStatement();
             st.executeUpdate(inserSingup);
 
-            String sql = "INSERT INTO userlogin(Username,Password,Role) Values('"+username+"','"+password+"','"+userrole+"')";
+            String sql = "INSERT INTO userlogin(Username,Password,Role) Values('" + username + "','" + password + "','" + userrole + "')";
             st.executeUpdate(sql);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Customer Registration");
@@ -210,7 +205,6 @@ public class SignUpFormController {
 
 
     }
-
 
 
 }

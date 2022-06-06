@@ -17,35 +17,35 @@ public class ItemCategory {
         return ID.get();
     }
 
-    public SimpleStringProperty IDProperty() {
-        return ID;
-    }
-
     public void setID(String ID) {
         this.ID.set(ID);
+    }
+
+    public SimpleStringProperty IDProperty() {
+        return ID;
     }
 
     public String getItem_Category() {
         return Item_Category.get();
     }
 
-    public SimpleStringProperty item_CategoryProperty() {
-        return Item_Category;
-    }
-
     public void setItem_Category(String item_Category) {
         this.Item_Category.set(item_Category);
+    }
+
+    public SimpleStringProperty item_CategoryProperty() {
+        return Item_Category;
     }
 
     public String getDescription() {
         return Description.get();
     }
 
-    public SimpleStringProperty descriptionProperty() {
-        return Description;
-    }
-
     public void setDescription(String description) {
         this.Description.set(description);
+    }
+
+    public SimpleStringProperty descriptionProperty() {
+        return Description;
     }
 }

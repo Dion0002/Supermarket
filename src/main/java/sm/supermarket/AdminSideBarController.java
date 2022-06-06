@@ -1,7 +1,6 @@
 package sm.supermarket;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +17,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import static javafx.scene.paint.Color.TRANSPARENT;
+
 public class AdminSideBarController implements Initializable {
 
     @FXML
@@ -101,7 +102,7 @@ public class AdminSideBarController implements Initializable {
 
     @FXML
     private void logout(MouseEvent event) {
-        try{
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
             Stage LoginPage = new Stage();
             Scene scene = new Scene(root);
@@ -110,7 +111,7 @@ public class AdminSideBarController implements Initializable {
             LoginPage.show();
             scene.setFill(TRANSPARENT);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -119,12 +120,12 @@ public class AdminSideBarController implements Initializable {
     }
 
 
-
-    private void loadPage(String Page)  {
+    private void loadPage(String Page) {
         Parent root = null;
         try {
-           root = FXMLLoader.load(getClass().getResource(Page + ".fxml"));
-        }catch (IOException e){
+            root = FXMLLoader.load(getClass().getResource(Page + ".fxml"));
+
+        } catch (IOException e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -132,8 +133,8 @@ public class AdminSideBarController implements Initializable {
 
     }
 
-    public void logutbutton(){
-        Stage stage = (Stage)  btn_logout.getScene().getWindow();
+    public void logutbutton() {
+        Stage stage = (Stage) btn_logout.getScene().getWindow();
         stage.close();
     }
 
