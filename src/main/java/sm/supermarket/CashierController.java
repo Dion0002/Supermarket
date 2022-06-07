@@ -3,6 +3,8 @@ package sm.supermarket;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,24 +12,29 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
+
 
 import static javafx.scene.paint.Color.TRANSPARENT;
 
 public class CashierController implements Initializable {
 
-    UserRole ur = new UserRole();
-    LoginFromController login = new LoginFromController();
-    Items items;
+
     @FXML
     private JFXButton btn_PrintBill;
     @FXML
@@ -43,15 +50,15 @@ public class CashierController implements Initializable {
     @FXML
     private JFXButton btn_searchItemNAme;
     @FXML
-    private TableColumn<?, ?> column_ItemDescription;
+    private TableColumn<Cart, String> column_ItemDescription;
     @FXML
-    private TableColumn<?, ?> column_itemID;
+    private TableColumn<Cart, String> column_itemID;
     @FXML
-    private TableColumn<?, ?> column_itemName;
+    private TableColumn<Cart, String> column_itemName;
     @FXML
-    private TableColumn<?, ?> column_price;
+    private TableColumn<Cart, String> column_price;
     @FXML
-    private TableColumn<?, ?> column_quantity;
+    private TableColumn<Cart, String> column_quantity;
     @FXML
     private DatePicker dp_dob;
     @FXML
@@ -69,7 +76,7 @@ public class CashierController implements Initializable {
     @FXML
     private Label lbl_total;
     @FXML
-    private TableView<?> tbl_cart;
+    private TableView<Cart> tbl_cart;
     @FXML
     private TextField tf_ItemID;
     @FXML
@@ -86,6 +93,13 @@ public class CashierController implements Initializable {
     private TextField tf_quantity;
     @FXML
     private TextField tf_username;
+    @FXML
+    private Label lbl_description;
+
+    DBConnection conn = new DBConnection();
+    Connection conDB = conn.getConnection();
+
+
 
     private void generateCode() {
 
@@ -143,26 +157,137 @@ public class CashierController implements Initializable {
 
 
     public void searchItem() {
-        try {
-            String itemName = tf_ItemName.getText();
+        String id = tf_ItemID.getText();
 
-        } catch (Exception e) {
+        String sql = "Select Item_Name ,Price,Description from add_item where ID='"+id+"'";
+        boolean found = false;
+
+        try(PreparedStatement pst = conDB.prepareStatement(sql)) {
+
+            try(ResultSet rs =pst.executeQuery()){
+
+            while(rs.next()){
+                found=true;
+                tf_ItemName.setText(rs.getString("Item_Name"));
+                tf_price.setText(rs.getString("Price"));
+                lbl_description.setText(rs.getString("Description"));
+
+
+            }
+
+        } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+
+            if(!found){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Items");
+                alert.setHeaderText("Searched item not found");
+                alert.setContentText("Try again");
+                alert.showAndWait();
+            }
+        }catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+
+    }
+
+    public void searchCustomer() {
+        String Uname = tf_username.getText();
+
+
+        String sql = "Select Firstname,Lastname,Phone,Birthday from customers where Username='"+Uname+"'";
+        boolean found = false;
+
+        try(PreparedStatement pst = conDB.prepareStatement(sql)) {
+
+            try(ResultSet rs =pst.executeQuery()){
+
+                while(rs.next()){
+                    found=true;
+                    tf_firstname.setText(rs.getString("Firstname"));
+                    tf_lastname.setText(rs.getString("Lastname"));
+                    tf_phoneNumber.setText(rs.getString("Phone"));
+                    dp_dob.setValue(LocalDate.parse(rs.getString("Birthday")));
+                    lbl_Discount.setText(String.valueOf(10));
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+
+            if(!found){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Customer");
+                alert.setHeaderText("Searched Customer not found");
+                alert.setContentText("Try again");
+                alert.showAndWait();
+                lbl_Discount.setText(String.valueOf(0));
+                empty();
+
+
+            }
+
+        }catch (SQLException e) {
             e.printStackTrace();
             e.getCause();
         }
+
     }
+
 
 
     public void cashUser() {
-
         lbl_cachierUsername.setText(String.valueOf(UserRole.username));
     }
 
+    public void empty(){
+        tf_username.setText("");
+        tf_firstname.setText("");
+        tf_lastname.setText("");
+        tf_phoneNumber.setText("");
+        tf_ItemID.setText("");
+        tf_ItemName.setText("");
+        tf_price.setText("");
+        tf_quantity.setText("");
+        lbl_description.setText("");
+        dp_dob.getEditor().setText("");
+
+    }
+
+    private void tableOrder(){
+
+        column_itemID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        column_itemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
+        column_ItemDescription.setCellValueFactory(new PropertyValueFactory<>("ItemDescription"));
+        column_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        column_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        tbl_cart.setItems(cart);
+    }
+
+    ObservableList<Cart> cart = FXCollections.observableArrayList();
+    public void addCart(){
+        Cart cartOrder = new Cart();
+        cartOrder.setId(Integer.parseInt(tf_ItemID.getText()));
+        cartOrder.setItemName(tf_ItemName.getText());
+        cartOrder.setItemDescription(lbl_description.getText());
+        cartOrder.setPrice(Integer.parseInt(tf_price.getText()));
+        cartOrder.setQuantity(Integer.parseInt(tf_quantity.getText()));
+        tbl_cart.getItems().add(cartOrder);
+        tableOrder();
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cashUser();
         generateCode();
         generateDateTime();
+
+
+
     }
 }

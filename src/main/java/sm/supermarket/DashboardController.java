@@ -62,8 +62,24 @@ public class DashboardController implements Initializable {
             pst = conDB.prepareStatement(sql);
             rs = pst.executeQuery();
             if (rs.next()) {
+                String employees = rs.getString("count(ID)");
+                lbl_Employees.setText(employees);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+
+        }
+    }
+
+    public void nrCustomer() {
+        try {
+            String sql = "Select count(ID) from customers";
+            pst = conDB.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()) {
                 String customer = rs.getString("count(ID)");
-                lbl_Employees.setText(customer);
+                lbl_customer.setText(customer);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,6 +120,7 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nrEmpl();
+        nrCustomer();
         try {
             loadPieChart();
         } catch (SQLException e) {
