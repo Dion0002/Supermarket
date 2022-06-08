@@ -44,6 +44,35 @@ INSERT INTO `add_item` VALUES (1,'Kola ',3,50,'Drinks','Kola fesfsfsf sfsfdsfd')
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cashierorder_table`
+--
+
+DROP TABLE IF EXISTS `cashierorder_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cashierorder_table` (
+  `OrderID` varchar(45) NOT NULL,
+  `CashierUsername` varchar(45) NOT NULL,
+  `OrderDate` varchar(45) NOT NULL,
+  `OrderTime` varchar(45) NOT NULL,
+  `CustomerUsername` varchar(45) DEFAULT NULL,
+  `Total` int NOT NULL,
+  `Total_With_Discount` int NOT NULL,
+  PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cashierorder_table`
+--
+
+LOCK TABLES `cashierorder_table` WRITE;
+/*!40000 ALTER TABLE `cashierorder_table` DISABLE KEYS */;
+INSERT INTO `cashierorder_table` VALUES ('CI4A','aa','2022-06-08','08:05:14','Dion',948,853),('KCB5','aa','2022-06-08','08:50:28','',6,0);
+/*!40000 ALTER TABLE `cashierorder_table` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `customers`
 --
 
@@ -59,10 +88,11 @@ CREATE TABLE `customers` (
   `Gender` varchar(45) NOT NULL,
   `Address` varchar(45) NOT NULL,
   `Birthday` varchar(45) NOT NULL,
+  `Phone` int NOT NULL,
   `Role` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +101,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Dion','Berberi','Dion','1234','Male','adasdasd','2022-05-01','Customer');
+INSERT INTO `customers` VALUES (1,'Dion','Berberi','Dion','1234','Male','adasdasd','2022-05-01',54245,'Customer'),(2,'adasdasd','asdasdasd','adasasdasd','12333','Female','qweqwe','2022-05-30',45454,'Customer'),(3,'asdasdscvdfbdfg','wedfsdvfxcvxcv','fghfghfgh','1234','Female','grtgdfg','2022-05-30',545445,'Customer'),(4,'ccc','xxxxx','ccccc','ccccc','Female','asdasdad','2022-06-01',5454544,'Customer'),(5,'bbbbb','bbbb','bbbbb','rrr','Male','rqwqwrwer','2022-06-01',54545,'Customer');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +178,7 @@ CREATE TABLE `userlogin` (
   `Role` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +187,7 @@ CREATE TABLE `userlogin` (
 
 LOCK TABLES `userlogin` WRITE;
 /*!40000 ALTER TABLE `userlogin` DISABLE KEYS */;
-INSERT INTO `userlogin` VALUES (1,'Admin','Admin','Admin'),(2,'Dion','1234','Customer'),(3,'aa','1234','Cashier'),(4,'asdasda','2e123','Admin'),(5,'afddfgdfg','sads','Cashier'),(6,'sdasdasda','asdasdaa','Admin'),(7,'czxzxc','xczxczx','Cashier'),(8,'zxcxxvdfbdfgdsfg','zcxzcx','Admin'),(9,'dfsdf','sddfs','Cashier'),(10,'wfdsvfsfsd','sdfsdfsdf','Admin'),(11,'fsddddd','sdfsdfsfs','Admin'),(12,'sdfsdf','sdfsdf','Admin'),(13,'sdfvcvbvvv','sdfsdf','Admin'),(14,'dsdv btrgsds','sdfs','Admin');
+INSERT INTO `userlogin` VALUES (1,'Admin','Admin','Admin'),(2,'Dion','1234','Customer'),(3,'aa','1234','Cashier'),(4,'asdasda','2e123','Admin'),(5,'afddfgdfg','sads','Cashier'),(6,'sdasdasda','asdasdaa','Admin'),(7,'czxzxc','xczxczx','Cashier'),(8,'zxcxxvdfbdfgdsfg','zcxzcx','Admin'),(9,'dfsdf','sddfs','Cashier'),(10,'wfdsvfsfsd','sdfsdfsdf','Admin'),(11,'fsddddd','sdfsdfsfs','Admin'),(12,'sdfsdf','sdfsdf','Admin'),(13,'sdfvcvbvvv','sdfsdf','Admin'),(14,'dsdv btrgsds','sdfs','Admin'),(15,'adasasdasd','12333','Customer'),(16,'fghfghfgh','1234','Customer'),(17,'ccccc','ccccc','Customer'),(18,'bbbbb','rrr','Customer');
 /*!40000 ALTER TABLE `userlogin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -170,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-02 18:23:42
+-- Dump completed on 2022-06-08 20:53:14
