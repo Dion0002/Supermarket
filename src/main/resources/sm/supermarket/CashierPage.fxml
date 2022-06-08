@@ -18,10 +18,11 @@
                 <TableView fx:id="tbl_cart" layoutX="29.0" layoutY="310.0" prefHeight="237.0" prefWidth="769.0">
                     <columns>
                         <TableColumn fx:id="column_itemID" prefWidth="99.0" text="Item ID" />
-                        <TableColumn fx:id="column_itemName" minWidth="0.0" prefWidth="121.0" text="Item Name" />
-                        <TableColumn fx:id="column_ItemDescription" minWidth="0.0" prefWidth="210.0" text="Item Description" />
-                        <TableColumn fx:id="column_price" minWidth="0.0" prefWidth="162.0" text="Price" />
-                        <TableColumn fx:id="column_quantity" minWidth="0.0" prefWidth="176.0" text="Quantity" />
+                        <TableColumn fx:id="column_itemName" minWidth="0.0" prefWidth="104.0" text="Item Name" />
+                        <TableColumn fx:id="column_ItemDescription" minWidth="0.0" prefWidth="179.0" text="Item Description" />
+                        <TableColumn fx:id="column_price" minWidth="0.0" prefWidth="146.0" text="Price" />
+                        <TableColumn fx:id="column_quantity" minWidth="0.0" prefWidth="127.0" text="Quantity" />
+                  <TableColumn fx:id="column_total" minWidth="0.0" prefWidth="113.0" text="Total" />
                     </columns>
                 </TableView>
                 <Pane layoutX="29.0" layoutY="23.0" prefHeight="75.0" prefWidth="337.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;">
@@ -99,7 +100,7 @@
                         </JFXButton>
                     </children>
                 </Pane>
-                <Pane layoutX="403.0" layoutY="14.0" prefHeight="276.0" prefWidth="343.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;">
+                <Pane layoutX="386.0" layoutY="14.0" prefHeight="276.0" prefWidth="337.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;">
                     <effect>
                         <DropShadow />
                     </effect>
@@ -124,7 +125,7 @@
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="tf_quantity" layoutX="21.0" layoutY="195.0" prefHeight="26.0" prefWidth="138.0" promptText="Quantity" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                        <TextField fx:id="tf_quantity" layoutX="21.0" layoutY="196.0" prefHeight="26.0" prefWidth="138.0" promptText="Quantity" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -141,56 +142,76 @@
                         </JFXButton>
                     </children>
                 </Pane>
-                <Pane layoutX="776.0" layoutY="14.0" prefHeight="276.0" prefWidth="209.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;">
+                <Pane layoutX="738.0" layoutY="14.0" prefHeight="276.0" prefWidth="248.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;">
                     <effect>
                         <DropShadow />
                     </effect>
                     <children>
-                        <Label layoutX="48.0" layoutY="14.0" text="T  O  T  A   L" textFill="#faff91">
+                        <Label layoutX="68.0" layoutY="14.0" text="T  O  T  A   L" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="20.0" />
                             </font>
                         </Label>
-                        <Label layoutX="20.0" layoutY="64.0" text="Item Count :" textFill="#faff91">
+                        <Label layoutX="16.0" layoutY="52.0" text="Item Count :" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lbl_ItemCount" layoutX="136.0" layoutY="64.0" text="0" textFill="#faff91">
+                        <Label fx:id="lbl_ItemCount" layoutX="155.0" layoutY="52.0" text="0" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="64.0" layoutY="181.0" text="Total  :" textFill="#faff91">
+                        <Label layoutX="58.0" layoutY="98.0" text="Total  :" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lbl_total" layoutX="136.0" layoutY="181.0" text="0" textFill="#faff91">
+                        <Label fx:id="lbl_total" layoutX="155.0" layoutY="98.0" text="0" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="32.0" layoutY="125.0" text="Discount  :" textFill="#faff91">
+                        <Label layoutX="23.0" layoutY="145.0" text="Discount  :" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="160.0" layoutY="125.0" text="\%" textFill="#faff91">
+                        <Label layoutX="173.0" layoutY="145.0" text="\%" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="160.0" layoutY="181.0" text="LEK" textFill="#faff91">
+                        <Label fx:id="lbl_Discount" layoutX="155.0" layoutY="145.0" text="0" textFill="#faff91">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lbl_Discount" layoutX="136.0" layoutY="125.0" text="0" textFill="#faff91">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </Label>
+                  <Label layoutX="36.0" layoutY="187.0" text="Total  with Discount " textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_totalDiscount" layoutX="131.0" layoutY="221.0" text="0" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btn_calculateDiscount" buttonType="RAISED" layoutX="23.0" layoutY="222.0" onAction="#TotalDiscount" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #faff91; -fx-background-radius: 20;" text="Calculate" textFill="#aae41b">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="211.0" layoutY="103.0" text="LEK" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="211.0" layoutY="226.0" text="LEK" textFill="#faff91">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                     </children>
                 </Pane>
                 <Label layoutX="29.0" layoutY="594.0" text="Cashier  :" textFill="#aae41b">
@@ -208,12 +229,12 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btn_remove" buttonType="RAISED" layoutX="840.0" layoutY="343.0" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="REMOVE" textFill="#faff91">
+                <JFXButton fx:id="btn_remove" buttonType="RAISED" layoutX="840.0" layoutY="343.0" onAction="#RemoveItem" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="REMOVE" textFill="#faff91">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="btn_SaveOrder" buttonType="RAISED" layoutX="840.0" layoutY="417.0" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="SAVE ORDER" textFill="#faff91">
+                <JFXButton fx:id="btn_SaveOrder" buttonType="RAISED" layoutX="840.0" layoutY="417.0" onAction="#SaveOrder" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" text="SAVE ORDER" textFill="#faff91">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
