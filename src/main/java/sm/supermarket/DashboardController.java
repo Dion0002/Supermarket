@@ -87,6 +87,36 @@ public class DashboardController implements Initializable {
 
         }
     }
+    public void nrOrder() {
+        try {
+            String sql = "Select count(OrderID) from cashierorder_table";
+            pst = conDB.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                String order = rs.getString("count(OrderID)");
+                lbl_orders.setText(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+
+        }
+    }
+    public void earnings() {
+        try {
+            String sql = "Select Sum(Total_With_Discount) from cashierorder_table";
+            pst = conDB.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                String sum = rs.getString("Sum(Total_With_Discount)");
+                lbl_lblsales.setText(sum);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+
+        }
+    }
 
     public void loadPieChart() throws SQLException, ClassCastException {
         ObservableList<PieChart.Data> pieChartData = observableArrayList(
@@ -121,6 +151,8 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nrEmpl();
         nrCustomer();
+        nrOrder();
+        earnings();
         try {
             loadPieChart();
         } catch (SQLException e) {

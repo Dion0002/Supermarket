@@ -11,6 +11,7 @@ public class Items {
     private final SimpleStringProperty Category;
     private final SimpleStringProperty Description;
 
+
     public Items(String id, String item_cat, String price, String quantity, String category, String description) {
         this.ID = new SimpleStringProperty(id);
         this.Item_Name = new SimpleStringProperty(item_cat);

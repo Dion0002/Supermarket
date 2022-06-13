@@ -6,137 +6,126 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="sm.supermarket.DashboardController">
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.DashboardController">
     <children>
         <Label fx:id="lbl_dashboard" layoutX="384.0" layoutY="14.0" text="Dashboard" textFill="#aae41b">
             <font>
-                <Font size="48.0"/>
+                <Font size="48.0" />
             </font>
         </Label>
-        <Pane layoutX="50.0" layoutY="98.0" prefHeight="170.0" prefWidth="900.0"
-              style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+        <Pane layoutX="50.0" layoutY="98.0" prefHeight="170.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
             <effect>
-                <DropShadow/>
+                <DropShadow />
             </effect>
             <children>
-                <Pane layoutX="33.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0"
-                      style="-fx-background-color: #ff4757;"/>
-                <JFXButton fx:id="btn_Employee" alignment="TOP_CENTER" layoutX="33.0" layoutY="25.0" prefHeight="131.0"
-                           prefWidth="180.0" style="-fx-border-color: #ff4757;" text="EMPLOYEES">
+                <Pane layoutX="33.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0" style="-fx-background-color: #ff4757;" />
+                <JFXButton fx:id="btn_Employee" alignment="TOP_CENTER" layoutX="33.0" layoutY="25.0" prefHeight="131.0" prefWidth="180.0" style="-fx-border-color: #ff4757;" text="EMPLOYEES">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <Label fx:id="lbl_Employees" alignment="CENTER" layoutX="93.0" layoutY="106.0" prefHeight="15.0"
-                       prefWidth="50.0" text="0">
+                <Label fx:id="lbl_Employees" alignment="CENTER" layoutX="93.0" layoutY="106.0" prefHeight="15.0" prefWidth="50.0" text="0">
                     <font>
-                        <Font name="Arial Black" size="27.0"/>
+                        <Font name="Arial Black" size="27.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Label>
-                <ImageView fx:id="img_emp" fitHeight="40.0" fitWidth="50.0" layoutX="98.0" layoutY="60.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="img_emp" fitHeight="40.0" fitWidth="50.0" layoutX="98.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/member_24px.png"/>
+                        <Image url="@../../img/member_24px.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="255.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0"
-                      style="-fx-background-color: #00a8ff;"/>
-                <JFXButton fx:id="btn_customer" alignment="TOP_CENTER" layoutX="255.0" layoutY="25.0" prefHeight="131.0"
-                           prefWidth="180.0" style="-fx-border-color: #00a8ff;" text="CUSTOMERS">
+                <Pane layoutX="255.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0" style="-fx-background-color: #00a8ff;" />
+                <JFXButton fx:id="btn_customer" alignment="TOP_CENTER" layoutX="255.0" layoutY="25.0" prefHeight="131.0" prefWidth="180.0" style="-fx-border-color: #00a8ff;" text="CUSTOMERS">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <Label fx:id="lbl_customer" alignment="CENTER" layoutX="315.0" layoutY="106.0" prefHeight="15.0"
-                       prefWidth="50.0" text="0">
+                <Label fx:id="lbl_customer" alignment="CENTER" layoutX="315.0" layoutY="106.0" prefHeight="15.0" prefWidth="50.0" text="0">
                     <font>
-                        <Font name="Arial Black" size="27.0"/>
+                        <Font name="Arial Black" size="27.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Label>
-                <ImageView fx:id="img_customer" fitHeight="40.0" fitWidth="50.0" layoutX="320.0" layoutY="60.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="img_customer" fitHeight="40.0" fitWidth="50.0" layoutX="320.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/customerDash_26px.png"/>
+                        <Image url="@../../img/customerDash_26px.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="475.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0"
-                      style="-fx-background-color: #747d8c;"/>
-                <JFXButton fx:id="btn_orders" alignment="TOP_CENTER" layoutX="475.0" layoutY="25.0" prefHeight="131.0"
-                           prefWidth="180.0" style="-fx-border-color: #747d8c;" text="TOTAL ORDERS">
+                <Pane layoutX="475.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0" style="-fx-background-color: #747d8c;" />
+                <JFXButton fx:id="btn_orders" alignment="TOP_CENTER" layoutX="475.0" layoutY="25.0" onAction="#nrOrder" prefHeight="131.0" prefWidth="180.0" style="-fx-border-color: #747d8c;" text="TOTAL ORDERS">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <Label fx:id="lbl_orders" alignment="CENTER" layoutX="535.0" layoutY="106.0" prefHeight="15.0"
-                       prefWidth="50.0" text="0">
+                <Label fx:id="lbl_orders" alignment="CENTER" layoutX="535.0" layoutY="106.0" prefHeight="15.0" prefWidth="50.0" text="0">
                     <font>
-                        <Font name="Arial Black" size="27.0"/>
+                        <Font name="Arial Black" size="27.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Label>
-                <ImageView fx:id="img_orders" fitHeight="40.0" fitWidth="50.0" layoutX="540.0" layoutY="60.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="img_orders" fitHeight="40.0" fitWidth="50.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/purchase_order_32px.png"/>
+                        <Image url="@../../img/purchase_order_32px.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="685.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0"
-                      style="-fx-background-color: #ffaa00;"/>
-                <JFXButton fx:id="btn_sales" alignment="TOP_CENTER" layoutX="685.0" layoutY="25.0" prefHeight="131.0"
-                           prefWidth="180.0" style="-fx-border-color: #ffaa00;" text="TOTAL SALES">
+                <Pane layoutX="685.0" layoutY="25.0" prefHeight="28.0" prefWidth="180.0" style="-fx-background-color: #ffaa00;" />
+                <JFXButton fx:id="btn_sales" alignment="TOP_CENTER" layoutX="685.0" layoutY="25.0" onAction="#earnings" prefHeight="131.0" prefWidth="180.0" style="-fx-border-color: #ffaa00;" text="TOTAL EARNINGS">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </JFXButton>
-                <Label fx:id="lbl_lblsales" alignment="CENTER" layoutX="745.0" layoutY="106.0" prefHeight="15.0"
-                       prefWidth="50.0" text="0">
+                <Label fx:id="lbl_lblsales" alignment="CENTER" layoutX="691.0" layoutY="117.0" prefHeight="29.0" prefWidth="135.0" text="0">
                     <font>
-                        <Font name="Arial Black" size="27.0"/>
+                        <Font name="Arial Black" size="15.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Label>
-                <ImageView fx:id="img_sales" fitHeight="40.0" fitWidth="50.0" layoutX="750.0" layoutY="60.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="img_sales" fitHeight="40.0" fitWidth="50.0" layoutX="750.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/total_sales_24px.png"/>
+                        <Image url="@../../img/total_sales_24px.png" />
                     </image>
                 </ImageView>
+            <Label fx:id="lbl_lblsales1" alignment="CENTER" layoutX="826.0" layoutY="117.0" prefHeight="29.0" prefWidth="34.0" text="LEK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
             </children>
         </Pane>
-        <Pane layoutX="50.0" layoutY="303.0" prefHeight="277.0" prefWidth="900.0"
-              style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+        <Pane layoutX="50.0" layoutY="303.0" prefHeight="277.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
             <effect>
-                <DropShadow/>
+                <DropShadow />
             </effect>
             <children>
                 <AreaChart fx:id="areaChart" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="500.0">
                     <xAxis>
-                        <CategoryAxis label="DAYS" side="BOTTOM"/>
+                        <CategoryAxis label="DAYS" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis label="ORDERS" side="LEFT"/>
+                        <NumberAxis label="ORDERS" side="LEFT" />
                     </yAxis>
                 </AreaChart>
-                <PieChart fx:id="PieChart" layoutX="544.0" layoutY="25.0" legendSide="TOP" prefHeight="197.0"
-                          prefWidth="263.0" title="MONTLY SALES"/>
+                <PieChart fx:id="PieChart" layoutX="544.0" layoutY="25.0" legendSide="TOP" prefHeight="197.0" prefWidth="263.0" title="MONTLY SALES" />
             </children>
         </Pane>
     </children>

@@ -1,23 +1,48 @@
 package sm.supermarket;
 
 public class Cart {
-    int id;
-    String ItemName;
-    String ItemDescription;
-    int price;
-    String quantity;
-    int total;
+    protected static String CashUsername;
+    protected static int id;
+    protected static String ItemName;
+    protected static String ItemDescription;
+    protected static int price;
+    protected static String quantity;
+    protected static int total;
+    protected static String OrderID;
+    protected static String Date;
+    protected static String Time;
+    protected static int totalDis;
+    protected static int dis;
+    protected static String Bill;
+
 
     public Cart() {
     }
 
-    public Cart(int id, String itemName, String itemDescription, int price, String quantity, int total) {
-        this.id = id;
+
+    public Cart(int id, String itemName, String itemDescription, int price, String quantity, int total, String orderID, String date, String time, int totalDis, int dis, String bill, String cashUsername) {
+        Cart.id = id;
         ItemName = itemName;
         ItemDescription = itemDescription;
-        this.price = price;
-        this.quantity = quantity;
-        this.total = total;
+        Cart.price = price;
+        Cart.quantity = quantity;
+        Cart.total = total;
+        OrderID = orderID;
+        Date = date;
+        Time = time;
+        Cart.totalDis = totalDis;
+        Cart.dis = dis;
+        Bill = bill;
+        CashUsername = cashUsername;
+
+    }
+
+    public static String getCashUsername() {
+        return CashUsername;
+    }
+
+    public static void setCashUsername(String cashUsername) {
+        CashUsername = cashUsername;
     }
 
     public int getId() {
@@ -25,7 +50,7 @@ public class Cart {
     }
 
     public void setId(int id) {
-        this.id = id;
+        Cart.id = id;
     }
 
     public String getItemName() {
@@ -49,7 +74,7 @@ public class Cart {
     }
 
     public void setPrice(int price) {
-        this.price = price;
+        Cart.price = price;
     }
 
     public String getQuantity() {
@@ -57,7 +82,7 @@ public class Cart {
     }
 
     public void setQuantity(String quantity) {
-        this.quantity = quantity;
+        Cart.quantity = quantity;
     }
 
     public int getTotal() {
@@ -65,6 +90,55 @@ public class Cart {
     }
 
     public void setTotal(int total) {
-        this.total = total;
+        Cart.total = total;
+    }
+
+    public String getOrderID() {
+        return OrderID;
+    }
+
+    public void setOrderID(String orderID) {
+        OrderID = orderID;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public int getTotalDis() {
+        return totalDis;
+    }
+
+    public void setTotalDis(int totalDis) {
+        Cart.totalDis = totalDis;
+    }
+
+    public int getDis() {
+        return dis;
+    }
+
+    public void setDis(int dis) {
+        Cart.dis = dis;
+    }
+
+    public String getBill() {
+        return Bill;
+    }
+
+    public void setBill(String bill) {
+        Bill = bill;
+
     }
 }
