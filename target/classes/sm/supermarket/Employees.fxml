@@ -16,13 +16,13 @@
         <Label fx:id="lbl_birthday" layoutX="193.0" layoutY="14.0" text="Birthday"/>
         <Label fx:id="lbl_password" layoutX="412.0" layoutY="77.0" text="Password"/>
         <TextField fx:id="tf_employeeID" alignment="CENTER" editable="false" layoutX="21.0" layoutY="43.0"
-                   prefHeight="26.0" prefWidth="150.0" promptText="ID" styleClass="employeeID"/>
+                   prefHeight="26.0" prefWidth="150.0" promptText="ID" styleClass="employeeID" style=" -fx-prompt-text-fill:#fff;"/>
         <TextField fx:id="tf_firstname" alignment="CENTER" layoutX="21.0" layoutY="111.0" prefHeight="26.0"
-                   prefWidth="150.0" promptText="Firstname" styleClass="firstname"/>
+                   prefWidth="150.0" promptText="Firstname" styleClass="firstname" style=" -fx-prompt-text-fill:#fff;"/>
         <TextField fx:id="tf_lastname" alignment="CENTER" layoutX="21.0" layoutY="189.0" prefHeight="26.0"
-                   prefWidth="150.0" promptText="Lastname" styleClass="lastname"/>
+                   prefWidth="150.0" promptText="Lastname" styleClass="lastname" style=" -fx-prompt-text-fill:#fff;"/>
         <DatePicker fx:id="dp_dob" layoutX="193.0" layoutY="43.0" prefHeight="26.0" prefWidth="150.0"
-                    promptText="Birthday"/>
+                    promptText="Birthday" style=" -fx-prompt-text-fill:#fff;"/>
         <JFXRadioButton fx:id="rb_male" layoutX="22.0" layoutY="255.0" text="Male">
             <toggleGroup>
                 <ToggleGroup fx:id="gender"/>
@@ -33,9 +33,9 @@
                   promptText="Address" styleClass="address"/>
         <Label fx:id="lbl_username" layoutX="411.0" layoutY="18.0" text="Username"/>
         <TextField fx:id="tf_username" alignment="CENTER" layoutX="410.0" layoutY="44.0" prefHeight="26.0"
-                   prefWidth="150.0" promptText="Username" styleClass="username"/>
+                   prefWidth="150.0" promptText="Username" styleClass="username" style=" -fx-prompt-text-fill:#fff;"/>
         <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="410.0" layoutY="109.0" prefHeight="26.0"
-                       prefWidth="150.0" promptText="Password" styleClass="password"/>
+                       prefWidth="150.0" promptText="Password" styleClass="password" style=" -fx-prompt-text-fill:#fff;"/>
         <TableView fx:id="tbl_employee" layoutX="9.0" layoutY="300.0" prefHeight="300.0" prefWidth="1000.0">
             <columns>
                 <TableColumn fx:id="column_id" prefWidth="39.0" text="ID"/>
@@ -52,21 +52,21 @@
             </columns>
         </TableView>
         <JFXButton fx:id="btn_add" layoutX="716.0" layoutY="107.0" onAction="#addBtn" prefHeight="36.0"
-                   prefWidth="125.0" style="-fx-background-color: #AAE41B; -fx-background-radius: 50;" text="ADD"/>
+                   prefWidth="125.0" style="-fx-background-color: #47a025; -fx-background-radius: 50;" text="ADD"/>
         <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="168.0" text="Phone Number"/>
         <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="193.0" layoutY="189.0" prefHeight="26.0"
-                   prefWidth="150.0" promptText="Phone Number" styleClass="phone_number"/>
+                   prefWidth="150.0" promptText="Phone Number" styleClass="phone_number" style=" -fx-prompt-text-fill:#fff;"/>
         <JFXButton fx:id="btn_update" layoutX="716.0" layoutY="158.0" onAction="#updateEmployee" prefHeight="36.0"
                    prefWidth="125.0" style="-fx-background-color: #14f4d4; -fx-background-radius: 50;" text="UPDATE"/>
         <JFXButton fx:id="btn_delete" layoutX="716.0" layoutY="210.0" onAction="#deleteBtn" prefHeight="36.0"
                    prefWidth="125.0" style="-fx-background-color: #ff3300; -fx-background-radius: 50;" text="DELETE"/>
         <TextField fx:id="tf_search" alignment="CENTER" layoutX="637.0" layoutY="45.0" prefHeight="25.0"
-                   prefWidth="282.0" promptText="Search" styleClass="search"/>
+                   prefWidth="282.0" promptText="Search" styleClass="search" style=" -fx-prompt-text-fill:#fff;"/>
         <Label fx:id="lbl_role" layoutX="196.0" layoutY="223.0" text="Role"/>
         <JFXComboBox fx:id="cb_role" layoutX="192.0" layoutY="250.0" prefHeight="25.0" prefWidth="150.0"
                      promptText="Select"/>
         <Label fx:id="lbl_salary" layoutX="193.0" layoutY="88.0" text="Salary"/>
         <TextField fx:id="tf_salary" alignment="CENTER" layoutX="193.0" layoutY="108.0" prefHeight="26.0"
-                   prefWidth="150.0" promptText="Salary" styleClass="salary"/>
+                   prefWidth="150.0" promptText="Salary" styleClass="salary" style=" -fx-prompt-text-fill:#fff;"/>
     </children>
 </AnchorPane>

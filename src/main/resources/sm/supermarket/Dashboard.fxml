@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.DashboardController">
     <children>
-        <Label fx:id="lbl_dashboard" layoutX="384.0" layoutY="14.0" text="Dashboard" textFill="#aae41b">
+        <Label fx:id="lbl_dashboard" layoutX="384.0" layoutY="14.0" text="Dashboard" textFill="#47a025">
             <font>
                 <Font size="48.0" />
             </font>

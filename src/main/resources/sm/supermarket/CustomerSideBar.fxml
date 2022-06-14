@@ -9,11 +9,11 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="BoardPaneAdmin" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0"
-            style="-fx-background-color: #47A025;" xmlns="http://javafx.com/javafx/18"
+            style="-fx-background-color: #a4e48b;" xmlns="http://javafx.com/javafx/18"
             fx:controller="sm.supermarket.CustomerSideBarController">
     <left>
         <VBox fx:id="hbox_left" alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0"
-              prefWidth="170.0" style="-fx-background-color: #AAE41B; -fx-background-radius: 0 30 30 0;"
+              prefWidth="170.0" style="-fx-background-color: #47a025; -fx-background-radius: 0 30 30 0;"
               BorderPane.alignment="CENTER">
             <children>
                 <ImageView fx:id="img_logo" fitHeight="109.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +24,7 @@
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </ImageView>
-                <Label fx:id="lbl_fast" text="Fast" textFill="#ffffff">
+                <Label fx:id="lbl_fast" text="Fast" textFill="#a4e48b">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="25.0"/>
                     </font>
@@ -32,7 +32,7 @@
                         <Insets top="7.0"/>
                     </VBox.margin>
                 </Label>
-                <Label fx:id="lbl_market" text="Market" textFill="#ffffff">
+                <Label fx:id="lbl_market" text="Market" textFill="#a4e48b">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="25.0"/>
                     </font>
@@ -41,7 +41,7 @@
                     </VBox.margin>
                 </Label>
                 <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="91.0" prefWidth="170.0"
-                           text="DASHBOARD" textFill="#ffffff" textOverrun="CLIP">
+                           text="DASHBOARD" textFill="#a4e48b" textOverrun="CLIP">
                     <VBox.margin>
                         <Insets top="4.0"/>
                     </VBox.margin>
@@ -58,7 +58,7 @@
                     </font>
                 </JFXButton>
                 <JFXButton fx:id="btn_buy" onMouseClicked="#cartList" prefHeight="91.0" prefWidth="170.0"
-                           text="PURCHASE" textFill="#ffffff" textOverrun="CLIP">
+                           text="PURCHASE" textFill="#a4e48b" textOverrun="CLIP">
                     <VBox.margin>
                         <Insets top="4.0"/>
                     </VBox.margin>
@@ -75,7 +75,7 @@
                     </font>
                 </JFXButton>
                 <JFXButton fx:id="btn_logout" onMouseClicked="#logout" prefHeight="70.0" prefWidth="170.0" text="LOGOUT"
-                           textFill="#ffffff">
+                           textFill="#a4e48b">
                     <VBox.margin>
                         <Insets/>
                     </VBox.margin>
