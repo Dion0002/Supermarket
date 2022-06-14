@@ -52,7 +52,7 @@
             </columns>
         </TableView>
         <JFXButton fx:id="btn_add" layoutX="716.0" layoutY="107.0" onAction="#addBtn" prefHeight="36.0"
-                   prefWidth="125.0" style="-fx-background-color: AAE41B; -fx-background-radius: 50;" text="ADD"/>
+                   prefWidth="125.0" style="-fx-background-color: #AAE41B; -fx-background-radius: 50;" text="ADD"/>
         <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="168.0" text="Phone Number"/>
         <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="193.0" layoutY="189.0" prefHeight="26.0"
                    prefWidth="150.0" promptText="Phone Number" styleClass="phone_number"/>

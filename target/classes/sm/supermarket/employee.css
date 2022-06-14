@@ -1,54 +1,54 @@
 .employeeID {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .firstname {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .lastname {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .username {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .password {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .phone_number {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .search {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .salary {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: gray;
-    -fx-background-color: FAFF91;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #47A025;
 }
 
 .address {
     -fx-border-color: #c6c6c6;
-    -fx-background-color: FAFF91;
+    -fx-background-color: #47A025;
     -fx-border-width: 2;
 }
 

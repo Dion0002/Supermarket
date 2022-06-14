@@ -14,95 +14,95 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.AddItemsController">
     <children>
-        <Pane layoutX="22.0" layoutY="12.0" prefHeight="576.0" prefWidth="374.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" stylesheets="@addItems.css">
+        <Pane layoutX="22.0" layoutY="12.0" prefHeight="576.0" prefWidth="374.0" style="-fx-background-color: #AAE41B; -fx-background-radius: 20;" stylesheets="@addItems.css">
             <children>
-                <Label fx:id="lbl_addItemCategory" layoutX="55.0" layoutY="23.0" text="ADD ITEM CATEGORY" textFill="#faff91">
+                <Label fx:id="lbl_addItemCategory" layoutX="55.0" layoutY="23.0" text="ADD ITEM CATEGORY" textFill="#ffffff">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_itmCat" layoutX="21.0" layoutY="140.0" text="Item Category" textFill="#faff91">
+                <Label fx:id="lbl_itmCat" layoutX="21.0" layoutY="140.0" text="Item Category" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_catDescrip" layoutX="43.0" layoutY="191.0" text="Description" textFill="#faff91">
+                <Label fx:id="lbl_catDescrip" layoutX="43.0" layoutY="191.0" text="Description" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextField fx:id="tf_itmcategory" alignment="CENTER" layoutX="149.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" promptText="Category" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_itmcategory" alignment="CENTER" layoutX="149.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" promptText="Category" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextArea fx:id="ta_categDes" layoutX="149.0" layoutY="191.0" prefHeight="93.0" prefWidth="200.0" promptText="Description" style="-fx-border-color: #c6c6c6; -fx-background-color: AAE41B; -fx-border-width: 2;">
+                <TextArea fx:id="ta_categDes" layoutX="149.0" layoutY="191.0" prefHeight="93.0" prefWidth="200.0" promptText="Description" style="-fx-border-color: #c6c6c6; -fx-background-color: #AAE41B; -fx-border-width: 2;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextArea>
                 <TableView fx:id="tbl_category" layoutX="7.0" layoutY="309.0" prefHeight="200.0" prefWidth="357.0">
                     <columns>
                         <TableColumn fx:id="column_catID" prefWidth="106.0" text="ID" />
-                        <TableColumn fx:id="column_ItemCategory" prefWidth="109.0" text="Item Category" />
+                        <TableColumn fx:id="column_ItemCategory" prefWidth="109.0" text="Item Category" textFill="#ffffff"/>
                         <TableColumn fx:id="column_descript" minWidth="4.0" prefWidth="141.0" text="Description" />
                     </columns>
                 </TableView>
-                <JFXButton fx:id="btn_addCategory" buttonType="RAISED" layoutX="17.0" layoutY="515.0" onAction="#btn_AddCat" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: FAFF91; -fx-background-radius: 50;" text="ADD" />
+                <JFXButton fx:id="btn_addCategory" buttonType="RAISED" layoutX="17.0" layoutY="515.0" onAction="#btn_AddCat" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #47A025; -fx-background-radius: 50;" text="ADD" />
                 <JFXButton fx:id="btn_updateCategory" buttonType="RAISED" layoutX="138.0" layoutY="515.0" onAction="#btn_UpdateCat" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #14f4d4; -fx-background-radius: 50;" text="UPDATE" />
                 <JFXButton fx:id="btn_deleteCategory" buttonType="RAISED" layoutX="249.0" layoutY="515.0" onAction="#btn_DeleteCat" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #ff3300; -fx-background-radius: 50;" text="DELETE" />
-                <Label fx:id="lbl_categoryID" layoutX="17.0" layoutY="292.0" textFill="#faff91" />
+                <Label fx:id="lbl_categoryID" layoutX="17.0" layoutY="292.0" textFill="#ffffff" />
             </children>
          <effect>
             <DropShadow />
          </effect>
         </Pane>
-        <Pane layoutX="425.0" layoutY="14.0" prefHeight="576.0" prefWidth="563.0" style="-fx-background-color: AAE41B; -fx-background-radius: 20;" stylesheets="@addItems.css">
+        <Pane layoutX="425.0" layoutY="14.0" prefHeight="576.0" prefWidth="563.0" style="-fx-background-color: #AAE41B; -fx-background-radius: 20;" stylesheets="@addItems.css">
             <children>
-                <Label fx:id="lbl_addItem" layoutX="214.0" layoutY="24.0" text="ADD ITEM" textFill="#faff91">
+                <Label fx:id="lbl_addItem" layoutX="214.0" layoutY="24.0" text="ADD ITEM" textFill="#ffffff">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tf_searchItem" alignment="CENTER" layoutX="160.0" layoutY="82.0" prefHeight="25.0" prefWidth="244.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_searchItem" alignment="CENTER" layoutX="160.0" layoutY="82.0" prefHeight="25.0" prefWidth="244.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <Label fx:id="lbl_itemName" layoutX="8.0" layoutY="152.0" text="Item Name" textFill="#faff91">
+                <Label fx:id="lbl_itemName" layoutX="8.0" layoutY="152.0" text="Item Name" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_quantity" layoutX="17.0" layoutY="208.0" text="Quantity" textFill="#faff91">
+                <Label fx:id="lbl_quantity" layoutX="17.0" layoutY="208.0" text="Quantity" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_price" layoutX="333.0" layoutY="163.0" text="Price" textFill="#faff91">
+                <Label fx:id="lbl_price" layoutX="333.0" layoutY="163.0" text="Price" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_decItem" layoutX="289.0" layoutY="210.0" text="Description" textFill="#faff91">
+                <Label fx:id="lbl_decItem" layoutX="289.0" layoutY="210.0" text="Description" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tf_itemName" alignment="CENTER" layoutX="108.0" layoutY="152.0" prefHeight="25.0" prefWidth="167.0" promptText="Name" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_itemName" alignment="CENTER" layoutX="108.0" layoutY="152.0" prefHeight="25.0" prefWidth="167.0" promptText="Name" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextField fx:id="tf_qunatity" alignment="CENTER" layoutX="108.0" layoutY="207.0" prefHeight="25.0" prefWidth="167.0" promptText="Quantity" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_qunatity" alignment="CENTER" layoutX="108.0" layoutY="207.0" prefHeight="25.0" prefWidth="167.0" promptText="Quantity" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextField fx:id="tf_price" alignment="CENTER" layoutX="387.0" layoutY="160.0" prefHeight="25.0" prefWidth="167.0" promptText="Price" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: AAE41B;">
+                <TextField fx:id="tf_price" alignment="CENTER" layoutX="387.0" layoutY="160.0" prefHeight="25.0" prefWidth="167.0" promptText="Price" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #AAE41B;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextArea fx:id="ta_descriptionItem" layoutX="387.0" layoutY="207.0" prefHeight="69.0" prefWidth="167.0" promptText="Description" style="-fx-border-color: #c6c6c6; -fx-background-color: AAE41B; -fx-border-width: 2;">
+                <TextArea fx:id="ta_descriptionItem" layoutX="387.0" layoutY="207.0" prefHeight="69.0" prefWidth="167.0" promptText="Description" style="-fx-border-color: #c6c6c6; -fx-background-color: #AAE41B; -fx-border-width: 2;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextArea>
@@ -116,7 +116,7 @@
                         <TableColumn fx:id="column_ItemDescription" minWidth="4.0" prefWidth="130.0" text="Description" />
                     </columns>
                 </TableView>
-                <JFXButton fx:id="btn_addItem" buttonType="RAISED" layoutX="80.0" layoutY="511.0" onAction="#btn_AddItems" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: FAFF91; -fx-background-radius: 50;" text="ADD">
+                <JFXButton fx:id="btn_addItem" buttonType="RAISED" layoutX="80.0" layoutY="511.0" onAction="#btn_AddItems" prefHeight="45.0" prefWidth="94.0" style="-fx-background-color: #47A025; -fx-background-radius: 50;" text="ADD">
                     <effect>
                         <DropShadow />
                     </effect>
@@ -131,13 +131,13 @@
                         <DropShadow />
                     </effect>
                 </JFXButton>
-                <Label fx:id="lbl_categoryItems" layoutX="25.0" layoutY="254.0" text="Category" textFill="#faff91">
+                <Label fx:id="lbl_categoryItems" layoutX="25.0" layoutY="254.0" text="Category" textFill="#ffffff">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
                 <JFXComboBox fx:id="cmb_category" layoutX="108.0" layoutY="255.0" prefHeight="25.0" prefWidth="167.0" promptText="Select" />
-                <Label fx:id="lbl_itemID" layoutX="52.0" layoutY="288.0" prefHeight="17.0" prefWidth="9.0" textFill="#faff91" />
+                <Label fx:id="lbl_itemID" layoutX="52.0" layoutY="288.0" prefHeight="17.0" prefWidth="9.0" textFill="#ffffff" />
             </children>
          <effect>
             <DropShadow />

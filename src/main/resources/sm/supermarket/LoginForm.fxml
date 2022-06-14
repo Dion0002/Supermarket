@@ -15,7 +15,7 @@
                     AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="47.0">
             <children>
                 <AnchorPane fx:id="loginpage" layoutX="327.0" layoutY="32.0" prefHeight="599.0" prefWidth="551.0"
-                            style="-fx-background-color: FAFF91; -fx-background-radius: 1em;"
+                            style="-fx-background-color: #47A025; -fx-background-radius: 1em;"
                             AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="12.0"
                             AnchorPane.topAnchor="32.0">
                     <children>
@@ -34,17 +34,17 @@
                         </Label>
                         <TextField fx:id="tf_username" alignment="CENTER" layoutX="142.0" layoutY="202.0"
                                    prefHeight="40.0" prefWidth="269.0" promptText="Username"
-                                   style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;"
+                                   style="-fx-border-width: 0 0 1 0; -fx-background-color: #47A025; -fx-border-color: #ffffff; -fx-color:#fff"
                                    AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="117.0"/>
                         <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="142.0" layoutY="292.0"
                                        onKeyReleased="#HidePasswordOnAction" prefHeight="40.0" prefWidth="269.0"
                                        promptText="Password"
-                                       style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: FAFF91;"
+                                       style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #47A025;"
                                        AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="117.0"/>
                         <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="159.0" layoutY="406.0"
                                    onAction="#loginButtonOnAction" prefHeight="67.0" prefWidth="229.0"
-                                   ripplerFill="WHITE" style="-fx-background-color: AAE41B; -fx-background-radius: 30;"
-                                   text="Login" textFill="#faff91">
+                                   ripplerFill="WHITE" style="-fx-background-color: #AAE41B; -fx-background-radius: 30;"
+                                   text="Login" textFill="#ffffff">
                             <font>
                                 <Font name="System Bold" size="22.0"/>
                             </font>
@@ -69,8 +69,8 @@
                         </ImageView>
                         <JFXButton fx:id="btn_cancel" buttonType="RAISED" layoutX="161.0" layoutY="494.0"
                                    onAction="#cancelButton" prefHeight="67.0" prefWidth="229.0" ripplerFill="WHITE"
-                                   style="-fx-background-color: AAE41B; -fx-background-radius: 30;" text="Cancel"
-                                   textFill="#faff91">
+                                   style="-fx-background-color: #AAE41B; -fx-background-radius: 30;" text="Cancel"
+                                   textFill="#ffffff">
                             <font>
                                 <Font name="System Bold" size="22.0"/>
                             </font>
@@ -84,7 +84,7 @@
                         <TextField fx:id="tf_showPass" alignment="CENTER" layoutX="141.0" layoutY="292.0"
                                    onKeyReleased="#ShowPasswordOnAction" prefHeight="40.0" prefWidth="292.0"
                                    promptText="Password"
-                                   style="-fx-border-width: 0 0 1 0; -fx-background-color: FAFF91; -fx-border-color: grey;"/>
+                                   style="-fx-border-width: 0 0 1 0; -fx-background-color: #47A025; -fx-border-color: #ffffff;"/>
                         <ImageView fx:id="img_seePass" fitHeight="27.0" fitWidth="30.0" layoutX="403.0" layoutY="299.0"
                                    onMouseClicked="#open_eye_onClicked" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -104,7 +104,7 @@
                     </effect>
                 </AnchorPane>
                 <AnchorPane layoutX="14.0" layoutY="-26.0" prefHeight="714.0" prefWidth="334.0"
-                            style="-fx-background-color: AAE41B; -fx-background-radius: 1em;"
+                            style="-fx-background-color: #AAE41B; -fx-background-radius: 1em;"
                             AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="-26.0">
                     <effect>
                         <DropShadow/>
@@ -116,19 +116,19 @@
                                 <Image url="@../../img/buying_64px.png"/>
                             </image>
                         </ImageView>
-                        <Label layoutX="137.0" layoutY="445.0" text="Fast" textFill="#faff91">
+                        <Label layoutX="137.0" layoutY="445.0" text="Fast" textFill="#ffffff">
                             <font>
                                 <Font name="System Bold" size="35.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="108.0" layoutY="496.0" text="Market" textFill="#faff91">
+                        <Label layoutX="108.0" layoutY="496.0" text="Market" textFill="#ffffff">
                             <font>
                                 <Font name="System Bold" size="35.0"/>
                             </font>
                         </Label>
                         <JFXButton fx:id="btn_signUp" buttonType="RAISED" layoutX="50.0" layoutY="583.0"
                                    onAction="#SignUpButton" prefHeight="67.0" prefWidth="229.0" ripplerFill="WHITE"
-                                   style="-fx-background-color: FAFF91; -fx-background-radius: 30;" text="SignUP"
+                                   style="-fx-background-color: #47A025; -fx-background-radius: 30;" text="SignUP"
                                    textFill="#aae41b">
                             <font>
                                 <Font name="System Bold" size="22.0"/>

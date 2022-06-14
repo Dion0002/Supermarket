@@ -30,19 +30,19 @@
         <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="410.0" layoutY="109.0" prefHeight="26.0" prefWidth="150.0" promptText="Password" styleClass="password" />
         <TableView fx:id="tbl_customer" layoutX="9.0" layoutY="300.0" prefHeight="300.0" prefWidth="1000.0">
             <columns>
-                <TableColumn fx:id="column_id" prefWidth="39.0" text="ID" />
-                <TableColumn fx:id="column_firstname" prefWidth="77.0" text="Fristname" />
-                <TableColumn fx:id="column_lastname" minWidth="7.199981689453125" prefWidth="84.0" text="Lastname" />
-                <TableColumn fx:id="column_birthday" minWidth="0.0" prefWidth="92.0" text="Birthday" />
-                <TableColumn fx:id="column_gender" text="Gender" />
-                <TableColumn fx:id="column_address" prefWidth="109.0" text="Address" />
-                <TableColumn fx:id="column_phone" prefWidth="91.0" text="Phone No" />
-                <TableColumn fx:id="column_username" prefWidth="102.0" text="Username" />
-                <TableColumn fx:id="column_password" minWidth="0.0" prefWidth="110.0" text="Password" />
-                <TableColumn fx:id="column_role" prefWidth="106.0" text="Role" />
+                <TableColumn fx:id="column_id" prefWidth="39.0" text="ID" textFill="#ffffff"/>
+                <TableColumn fx:id="column_firstname" prefWidth="77.0" text="First name" textFill="#ffffff"/>
+                <TableColumn fx:id="column_lastname" minWidth="7.199981689453125" prefWidth="84.0" text="Last name" textFill="#ffffff"/>
+                <TableColumn fx:id="column_birthday" minWidth="0.0" prefWidth="92.0" text="Birthday" textFill="#ffffff"/>
+                <TableColumn fx:id="column_gender" text="Gender" textFill="#ffffff"/>
+                <TableColumn fx:id="column_address" prefWidth="109.0" text="Address" textFill="#ffffff"/>
+                <TableColumn fx:id="column_phone" prefWidth="91.0" text="Phone #" textFill="#ffffff"/>
+                <TableColumn fx:id="column_username" prefWidth="102.0" text="Username" textFill="#ffffff"/>
+                <TableColumn fx:id="column_password" minWidth="0.0" prefWidth="110.0" text="Password" textFill="#ffffff"/>
+                <TableColumn fx:id="column_role" prefWidth="106.0" text="Role" textFill="#ffffff"/>
             </columns>
         </TableView>
-        <JFXButton fx:id="btn_add" layoutX="377.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" onAction="#addBtn" style="-fx-background-color: AAE41B; -fx-background-radius: 50;" text="ADD" />
+        <JFXButton fx:id="btn_add" layoutX="377.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" onAction="#addBtn" style="-fx-background-color: #AAE41B; -fx-background-radius: 50;" text="ADD" />
         <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="83.0" text="Phone Number" />
         <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="193.0" layoutY="104.0" prefHeight="26.0" prefWidth="150.0" promptText="Phone Number" styleClass="phone_number" />
         <JFXButton fx:id="btn_update" layoutX="512.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" onAction="#updateCustomer" style="-fx-background-color: #14f4d4; -fx-background-radius: 50;" text="UPDATE" />
