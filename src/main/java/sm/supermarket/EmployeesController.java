@@ -22,6 +22,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static javafx.scene.control.Alert.AlertType.WARNING;
 
@@ -156,7 +158,7 @@ public class EmployeesController implements Initializable {
         String salary = tf_salary.getText();
 
 
-        if (validateFileds()) {
+        if (validateFileds()& validateNumber() & validateFirstName() & validateLastName() & validateSalary()) {
             try {
 
                 pst = conDB.prepareStatement("INSERT INTO employees(firstname,lastname,birthday,gender,address,phonenumber,username,password,role,salary) VALUES(?,?,?,?,?,?,?,?,?,?)");
@@ -205,22 +207,79 @@ public class EmployeesController implements Initializable {
         rb_female.setSelected(false);
         rb_male.setSelected(false);
         cb_role.setValue("");
+        tf_salary.setText("");
 
     }
 
+    private boolean validateNumber(){
+        Pattern p = Pattern.compile("[0][6][7-9][0-9]{7}");
+        Matcher m = p.matcher(tf_phoneNo.getText());
+        if(m.find() && m.group().equals(tf_phoneNo.getText())){
+            return  true;
+        }else{
+            Alert alert = new Alert(WARNING);
+            alert.setTitle("Validate Phone Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Number");
+            alert.showAndWait();
+            return false;
+        }
+    }
+    private boolean validateFirstName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(tf_firstname.getText());
+
+        if((m.find() && m.group().equals(tf_firstname.getText()))){
+            return  true;
+        }else{
+            Alert alert = new Alert(WARNING);
+            alert.setTitle("Validate Firstname");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid character");
+            alert.showAndWait();
+            return false;
+        }
+    }
+    private boolean validateLastName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(tf_lastname.getText());
+        if((m.find() && m.group().equals(tf_lastname.getText()))){
+            return  true;
+        }else{
+            Alert alert = new Alert(WARNING);
+            alert.setTitle("Validate Lastname");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid character");
+            alert.showAndWait();
+            return false;
+        }
+    }
+    private boolean validateSalary(){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(tf_salary.getText());
+        if((m.find() && m.group().equals(tf_salary.getText()))){
+            return  true;
+        }else{
+            Alert alert = new Alert(WARNING);
+            alert.setTitle("Validate Salary");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Number");
+            alert.showAndWait();
+            return false;
+        }
+    }
+
+
+
     private boolean validateFileds() {
-        String firstname = tf_firstname.getText();
-        String lastname = tf_lastname.getText();
-        String phoneNumber = String.valueOf(tf_phoneNo.getText());
+
         String username = tf_username.getText();
         String password = pf_password.getText();
         String address = ta_address.getText();
         String birthday = dp_dob.getEditor().getText();
 
 
-        if (firstname.isEmpty() | lastname.isEmpty() |
-                birthday.isEmpty() | address.isEmpty() | phoneNumber.isEmpty() | username.isEmpty() | password.isEmpty()
-        ) {
+        if (birthday.isEmpty() | address.isEmpty()  | username.isEmpty() | password.isEmpty()) {
 
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Fields");
@@ -435,7 +494,7 @@ public class EmployeesController implements Initializable {
 
         String salary = tf_salary.getText();
 
-        if (validateFileds()) {
+        if (validateFileds() & validateNumber() & validateFirstName() & validateLastName() & validateSalary()) {
             try {
                 int id = Integer.parseInt(tf_employeeID.getText());
                 String query = "Update employees set FirstName=?, Lastname=?, Birthday=?, Gender=?, Address=?, PhoneNumber=?, Username=?, Password=?, Role=?, Salary=? Where ID ='" + id + "' ";

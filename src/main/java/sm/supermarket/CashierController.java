@@ -13,13 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,6 +25,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -41,8 +40,9 @@ public class CashierController implements Initializable {
     PreparedStatement pst;
     ResultSet rs;
     ObservableList<Cart> cart = FXCollections.observableArrayList();
+    Cart cartItem = new Cart();
     @FXML
-    private JFXButton btn_PrintBill;
+    private JFXButton btn_ShowBill;
     @FXML
     private JFXButton btn_SaveOrder;
     @FXML
@@ -129,7 +129,8 @@ public class CashierController implements Initializable {
             randCode += text[i];
         }
         lbl_orderID.setText(randCode);
-
+        String Oid = lbl_orderID.getText();
+        Cart.OrderID = Oid;
 
     }
 
@@ -141,6 +142,11 @@ public class CashierController implements Initializable {
         }), new KeyFrame(Duration.seconds(1.0D)));
         timeline.setCycleCount(-1);
         timeline.play();
+
+
+        String time = lbl_time.getText();
+        Cart.Time = time;
+
     }
 
     public void logout(ActionEvent event) {
@@ -160,6 +166,32 @@ public class CashierController implements Initializable {
 
         Stage stage = (Stage) btn_logout.getScene().getWindow();
         stage.close();
+    }
+
+    public void ShowBill(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("PrintBill.fxml"));
+            Stage PrintBill = new Stage();
+            Scene scene = new Scene(root);
+            PrintBill.initStyle(StageStyle.TRANSPARENT);
+            PrintBill.setScene(scene);
+            PrintBill.show();
+            scene.setFill(TRANSPARENT);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+//        empty();
+//        tbl_cart.getItems().clear();
+//        lbl_ItemCount.setText(String.valueOf(0));
+//        lbl_total.setText(String.valueOf(0));
+//        lbl_Discount.setText(String.valueOf(0));
+//        lbl_totalDiscount.setText(String.valueOf(0));
+        generateCode();
+        generateDateTime();
+        bill();
+
     }
 
     public void searchItem() {
@@ -263,15 +295,6 @@ public class CashierController implements Initializable {
 
     }
 
-    public void emptyCart(){
-        tf_ItemID.setText("");
-        tf_ItemName.setText("");
-        tf_price.setText("");
-        tf_quantity.setText("");
-        lbl_description.setText("");
-
-    }
-
     private void tableOrder() {
 
         column_itemID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -282,19 +305,15 @@ public class CashierController implements Initializable {
         column_total.setCellValueFactory(new PropertyValueFactory<>("total"));
         tbl_cart.setItems(cart);
 
-
-
-
-
-
     }
 
     public void addCart(ActionEvent event) {
+
         Cart cartOrder = new Cart();
         int price = Integer.parseInt(tf_price.getText());
         int qunatity = Integer.parseInt(tf_quantity.getText());
 
-
+//         if(countQuantity < qunatity){
         cartOrder.setId(Integer.parseInt(tf_ItemID.getText()));
         cartOrder.setItemName(tf_ItemName.getText());
         cartOrder.setItemDescription(lbl_description.getText());
@@ -305,24 +324,64 @@ public class CashierController implements Initializable {
         tableOrder();
         ItemCount();
         FinalTotal();
-
-
+//            }else{
+//
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setHeaderText("Items");
+//                alert.setTitle("Quantity Items");
+//                alert.setContentText("Not enough items in stock");
+//                alert.showAndWait();
+//
+//            }
 
 
     }
+//    int countQuantity ;
+//    public int updateQuantity() {
+//        String id = tf_ItemID.getText();
+//        String sql = "Select Quantity from add_item where ID=?";
+//
+//        try {
+//            pst = conDB.prepareStatement(sql);
+//            pst.setString(1, id);
+//            rs = pst.executeQuery();
+//
+//
+//            while (rs.next()) {
+//                countQuantity = rs.getInt(1);
+//            }
+//            int value = Integer.parseInt(tf_quantity.getText());
+//            countQuantity -= value;
+//            String sql2 = "Update add_item set Quantity=? where ID=?";
+//            pst = conDB.prepareStatement(sql2);
+//
+//            pst.setInt(1, countQuantity);
+//            pst.setString(2, id);
+//            pst.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            e.getCause();
+//        }
+//
+//        return countQuantity;
+//    }
 
     public void RemoveItem(ActionEvent event) {
         ObservableList<Cart> items = tbl_cart.getItems();
 
-        int selectedID = tbl_cart.getSelectionModel().getSelectedIndex();
-        tbl_cart.getItems().remove(selectedID);
-        ItemCount();
-        FinalTotal();
-        if (items.isEmpty()) {
-            lbl_ItemCount.setText("0");
-            lbl_total.setText("0");
-        }
+       if(tbl_cart.getItems().isEmpty()) {
+           int selectedID = tbl_cart.getSelectionModel().getSelectedIndex();
+           tbl_cart.getItems().remove(selectedID);
 
+           ItemCount();
+           FinalTotal();
+           if (items.isEmpty()) {
+               lbl_ItemCount.setText("0");
+               lbl_total.setText("0");
+           }
+       }else{
+
+       }
     }
 
     public void ItemCount() {
@@ -339,25 +398,26 @@ public class CashierController implements Initializable {
 
         int total = 0;
         for (Cart value : tbl_cart.getItems()) {
-                total = total + value.getTotal();
-                lbl_total.setText(String.valueOf(total));
-            }
+            total = total + value.getTotal();
+            lbl_total.setText(String.valueOf(total));
+            lbl_totalDiscount.setText(String.valueOf(total));
+        }
     }
 
-    public void TotalDiscount(){
+    public void TotalDiscount() {
         int total = Integer.parseInt(lbl_total.getText());
-        double dis= Integer.parseInt(lbl_Discount.getText());
-        total = (int) (total -(total*dis/100));
+        double dis = Integer.parseInt(lbl_Discount.getText());
+        total = (int) (total - (total * dis / 100));
         lbl_totalDiscount.setText(String.valueOf(total));
     }
 
-    public void SaveOrder(){
+    public void SaveOrder() {
 
-        String  OrderID = lbl_orderID.getText();
-        String  CashierUsername = lbl_cachierUsername.getText();
+        String OrderID = lbl_orderID.getText();
+        String CashierUsername = lbl_cachierUsername.getText();
         String OrderDate = lbl_OrderDate.getText();
         String OrderTime = lbl_time.getText();
-        String CustomerUsername=tf_username.getText();
+        String CustomerUsername = tf_username.getText();
         String Total = lbl_total.getText();
         String TotalDiscount = lbl_totalDiscount.getText();
 
@@ -379,7 +439,16 @@ public class CashierController implements Initializable {
             alert.setTitle("New Order");
             alert.setContentText("Order Saved");
             alert.showAndWait();
+            generateCode();
+            empty();
+            tbl_cart.getItems().clear();
+            lbl_ItemCount.setText(String.valueOf(0));
+            lbl_total.setText(String.valueOf(0));
+            lbl_Discount.setText(String.valueOf(0));
+            lbl_totalDiscount.setText(String.valueOf(0));
 
+
+        //updateQuantity();
         } catch (SQLException e) {
             e.printStackTrace();
             e.getCause();
@@ -387,12 +456,29 @@ public class CashierController implements Initializable {
         }
 
     }
-//tbl_cart.getItems().clear();
 
+    public void bill() {
 
+        List<List<String>> arrlist = new ArrayList<>();
+        for (int i = 0; i < tbl_cart.getItems().size(); i++) {
+            cartItem = tbl_cart.getItems().get(i);
+            arrlist.add(new ArrayList<>());
 
+            arrlist.get(i).add(Cart.ItemName);
+            arrlist.get(i).add(String.valueOf(Cart.price));
+            arrlist.get(i).add(Cart.quantity);
 
+        }
 
+        for (int i = 0; i < arrlist.size(); i++) {
+            for (int j = 0; j < arrlist.get(i).size(); j++) {
+                String bill = String.valueOf(arrlist.get(i).get(j));
+                System.out.println(bill);
+                Cart.Bill = bill;
+            }
+        }
+
+    }
 
 
     @Override
@@ -400,6 +486,10 @@ public class CashierController implements Initializable {
         cashUser();
         generateCode();
         generateDateTime();
+        String Cname = lbl_cachierUsername.getText();
+        Cart.CashUsername = Cname;
+        String date = lbl_OrderDate.getText();
+        Cart.Date = date;
 
     }
 }

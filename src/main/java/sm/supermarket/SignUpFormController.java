@@ -13,8 +13,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static javafx.scene.control.Alert.AlertType.WARNING;
 import static javafx.scene.paint.Color.TRANSPARENT;
@@ -93,6 +97,11 @@ public class SignUpFormController {
     @FXML
     private TextField tf_username;
 
+
+    DBConnection conn = new DBConnection();
+    Connection conDB = conn.getConnection();
+    PreparedStatement pst;
+    ResultSet rs;
     /**
      * This is for the goback button to open the login page
      *
@@ -129,7 +138,7 @@ public class SignUpFormController {
         if (!(pf_password.getText().equals(pf_confPass.getText()))) {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Error");
-            alert.setHeaderText(null);
+            alert.setHeaderText("");
             alert.setContentText("Password are not the same");
             alert.showAndWait();
 
@@ -170,41 +179,43 @@ public class SignUpFormController {
         String password = pf_password.getText();
         String address = ta_address.getText();
         String phone = tf_phoneNo.getText();
-
-
         JFXRadioButton selectedRB = (JFXRadioButton) gender.getSelectedToggle();
         String togglevalue = selectedRB.getText();
-
-        LocalDate locald = dp_dob.getValue();
-
+        LocalDate birthday = dp_dob.getValue();
         String userrole = lbl_userrole.getText();
 
 
-        String insertFields = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Phone,Role) VALUES ('";
-        String inserValues = firstname + "','" + lastname + "','" +
-                username + "','" + password + "','" + togglevalue + "','" + address + "','" + locald + "','" + userrole + "')";
-        String inserSingup = insertFields + inserValues;
 
-        try {
-            Statement st = conDB.createStatement();
-            st.executeUpdate(inserSingup);
-
-            String sql = "INSERT INTO userlogin(Username,Password,Role) Values('" + username + "','" + password + "','" + userrole + "')";
-            st.executeUpdate(sql);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Customer Registration");
-            alert.setTitle("Sign UP");
-            alert.setContentText("Registration Successfully");
-            alert.showAndWait();
+            try {
+                String sql1 = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Phone,Role) VALUES (?,?,?,?,?,?,?,?,?)";
+                pst = conDB.prepareStatement(sql1);
+                pst.setString(1, firstname);
+                pst.setString(2, lastname);
+                pst.setString(3, username);
+                pst.setString(4, password);
+                pst.setString(5, togglevalue);
+                pst.setString(6, address);
+                pst.setString(7, String.valueOf(birthday));
+                pst.setInt(8, Integer.parseInt(phone));
+                pst.setString(9, userrole);
+                pst.executeUpdate();
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
+                String sql = "INSERT INTO userlogin(Username,Password,Role) Values('" + username + "','" + password + "','" + userrole + "')";
+                pst=conDB.prepareStatement(sql);
+                pst.executeUpdate();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Customer Registration");
+                alert.setTitle("Sign UP");
+                alert.setContentText("Registration Successfully");
+                alert.showAndWait();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
 
 
     }
-
 
 }
