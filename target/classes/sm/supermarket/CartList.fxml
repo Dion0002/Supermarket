@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.CartList">
+   <children>
+      <Label layoutX="270.0" layoutY="28.0" text="Cart List" />
+      <TableView fx:id="tb_product" layoutX="24.0" layoutY="130.0" prefHeight="158.0" prefWidth="247.0">
+        <columns>
+          <TableColumn fx:id="itemName" prefWidth="75.0" text="Item Name" />
+          <TableColumn fx:id="itemPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="itemCategory" prefWidth="75.0" text="Category" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tb_cartList" layoutX="286.0" layoutY="88.0" prefHeight="200.0" prefWidth="293.0">
+        <columns>
+          <TableColumn fx:id="listItemName" prefWidth="102.0" text="Item Name" />
+          <TableColumn fx:id="listItemPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="listItemCategory" prefWidth="90.0" text="Category" />
+        </columns>
+      </TableView>
+      <Label layoutX="123.0" layoutY="63.0" text="Products" />
+      <Label layoutX="415.0" layoutY="63.0" text="List" />
+      <TextField fx:id="searchItem" layoutX="24.0" layoutY="96.0" prefHeight="26.0" prefWidth="247.0" promptText="Search" />
+      <Button fx:id="printList" layoutX="439.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Print List" />
+      <Button fx:id="deleteList" layoutX="347.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Delete List" />
+   </children>
+</AnchorPane>

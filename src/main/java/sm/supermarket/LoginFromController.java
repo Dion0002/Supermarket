@@ -72,19 +72,16 @@ public class LoginFromController implements Initializable {
      * @param event
      */
     public void loginButtonOnAction(ActionEvent event) {
-
-        if ((tf_username.getText().isBlank() == true && pf_password.getText().isBlank() == true) ||
-                (tf_username.getText().isBlank() == true || pf_password.getText().isBlank() == true)) {
-
+        if ((tf_username.getText().isBlank() == true && pf_password.getText().isBlank() == true)) {
             lbl_invalid.setText("Please enter username and password");
-
-
+        } else if(tf_username.getText().isBlank() == true){
+            lbl_invalid.setText("Username cannot be empty");
+        } else if(pf_password.getText().isBlank() == true){
+            lbl_invalid.setText("Password cannot be empty");
         } else if (auth() == true) {
         } else {
             lbl_invalid.setText("Incorrect username or password");
-
         }
-
     }
 
     /**
@@ -213,7 +210,7 @@ public class LoginFromController implements Initializable {
      */
     public void CusLog() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("CustomerSideBar.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));

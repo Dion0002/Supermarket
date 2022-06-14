@@ -88,7 +88,7 @@ CREATE TABLE `customers` (
   `Gender` varchar(45) NOT NULL,
   `Address` varchar(45) NOT NULL,
   `Birthday` varchar(45) NOT NULL,
-  `Phone` int NOT NULL,
+  `Phone` varchar(45) NOT NULL,
   `Role` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)

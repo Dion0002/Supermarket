@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="600.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/18"
-      fx:controller="sm.supermarket.AdCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@employee.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.AdCustomerController">
     <children>
-        <Text fx:id="txt_adCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="50.0"/>
-            </font>
-        </Text>
+        <Label fx:id="lbl_customerID" layoutX="21.0" layoutY="14.0" text="Customer ID" />
+        <Label fx:id="lbl_firstname" layoutX="21.0" layoutY="82.0" text="Firstname" />
+        <Label fx:id="lbl_lastname" layoutX="21.0" layoutY="160.0" text="Lastname" />
+        <Label fx:id="lbl_gender" layoutX="23.0" layoutY="223.0" text="Gender" />
+        <Label fx:id="lbl_address" layoutX="185.0" layoutY="150.0" text="Address" />
+        <Label fx:id="lbl_birthday" layoutX="193.0" layoutY="14.0" text="Birthday" />
+        <Label fx:id="lbl_password" layoutX="412.0" layoutY="77.0" text="Password" />
+        <TextField fx:id="tf_customerID" alignment="CENTER" editable="false" layoutX="21.0" layoutY="43.0" prefHeight="26.0" prefWidth="150.0" promptText="ID" styleClass="employeeID" />
+        <TextField fx:id="tf_firstname" alignment="CENTER" layoutX="21.0" layoutY="111.0" prefHeight="26.0" prefWidth="150.0" promptText="Firstname" styleClass="firstname" />
+        <TextField fx:id="tf_lastname" alignment="CENTER" layoutX="21.0" layoutY="189.0" prefHeight="26.0" prefWidth="150.0" promptText="Lastname" styleClass="lastname" />
+        <DatePicker fx:id="dp_dob" layoutX="193.0" layoutY="43.0" prefHeight="26.0" prefWidth="150.0" promptText="Birthday" />
+        <JFXRadioButton fx:id="rb_male" layoutX="22.0" layoutY="255.0" text="Male">
+            <toggleGroup>
+                <ToggleGroup fx:id="gender" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton fx:id="rb_female" layoutX="103.0" layoutY="254.0" text="Female" toggleGroup="$gender" />
+        <TextArea fx:id="ta_address" layoutX="188.0" layoutY="167.0" prefHeight="50.0" prefWidth="161.0" promptText="Address" styleClass="address" />
+        <Label fx:id="lbl_username" layoutX="411.0" layoutY="18.0" text="Username" />
+        <TextField fx:id="tf_username" alignment="CENTER" layoutX="410.0" layoutY="44.0" prefHeight="26.0" prefWidth="150.0" promptText="Username" styleClass="username" />
+        <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="410.0" layoutY="109.0" prefHeight="26.0" prefWidth="150.0" promptText="Password" styleClass="password" />
+        <TableView fx:id="tbl_customer" layoutX="9.0" layoutY="300.0" prefHeight="300.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn fx:id="column_id" prefWidth="39.0" text="ID" />
+                <TableColumn fx:id="column_firstname" prefWidth="77.0" text="Fristname" />
+                <TableColumn fx:id="column_lastname" minWidth="7.199981689453125" prefWidth="84.0" text="Lastname" />
+                <TableColumn fx:id="column_birthday" minWidth="0.0" prefWidth="92.0" text="Birthday" />
+                <TableColumn fx:id="column_gender" text="Gender" />
+                <TableColumn fx:id="column_address" prefWidth="109.0" text="Address" />
+                <TableColumn fx:id="column_phone" prefWidth="91.0" text="Phone No" />
+                <TableColumn fx:id="column_username" prefWidth="102.0" text="Username" />
+                <TableColumn fx:id="column_password" minWidth="0.0" prefWidth="110.0" text="Password" />
+                <TableColumn fx:id="column_role" prefWidth="106.0" text="Role" />
+            </columns>
+        </TableView>
+        <JFXButton fx:id="btn_add" layoutX="377.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" onAction="#addBtn" style="-fx-background-color: AAE41B; -fx-background-radius: 50;" text="ADD" />
+        <Label fx:id="lbl_phoneNo" layoutX="196.0" layoutY="83.0" text="Phone Number" />
+        <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="193.0" layoutY="104.0" prefHeight="26.0" prefWidth="150.0" promptText="Phone Number" styleClass="phone_number" />
+        <JFXButton fx:id="btn_update" layoutX="512.0" layoutY="159.0" prefHeight="36.0" prefWidth="125.0" onAction="#updateCustomer" style="-fx-background-color: #14f4d4; -fx-background-radius: 50;" text="UPDATE" />
+        <JFXButton fx:id="btn_delete" layoutX="727.0" layoutY="253.0" prefHeight="36.0" prefWidth="173.0" onAction="#deleteBtn" style="-fx-background-color: #ff3300; -fx-background-radius: 50;" text="DELETE" />
+        <TextField fx:id="tf_search" alignment="CENTER" layoutX="384.0" layoutY="259.0" prefHeight="27.0" prefWidth="328.0" promptText="Search" styleClass="search" />
+        <Label fx:id="lbl_role" layoutX="196.0" layoutY="223.0" text="Role" />
+        <JFXComboBox fx:id="cb_role" layoutX="192.0" layoutY="250.0" prefHeight="25.0" prefWidth="150.0" promptText="Select" />
+      <ImageView fitHeight="256.0" fitWidth="256.0" layoutX="714.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/customer.png" />
+         </image>
+      </ImageView>
+
     </children>
-</HBox>
+</AnchorPane>
