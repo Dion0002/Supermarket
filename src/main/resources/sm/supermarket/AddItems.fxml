@@ -26,16 +26,16 @@
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_catDescrip" layoutX="43.0" layoutY="191.0" text="Description" textFill="#a4e48b">
-                    <font>
-                        <Font name="System Bold" size="17.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: #47a025;">
+<!--                <Label fx:id="lbl_catDescrip" layoutX="43.0" layoutY="191.0" text="Description" textFill="#a4e48b">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="17.0" />-->
+<!--                    </font>-->
+<!--                </Label>-->
+                <TextField fx:id="tf_searchcategory" alignment="CENTER" layoutX="78.0" layoutY="79.0" prefHeight="25.0" prefWidth="218.0" promptText="SEARCH" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #47a025; -fx-prompt-text-fill:#fff;" >
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <TextField fx:id="tf_itmcategory" alignment="CENTER" layoutX="149.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" promptText="Category" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: #47a025;">
+                <TextField fx:id="tf_itmcategory" alignment="CENTER" layoutX="149.0" layoutY="140.0" prefHeight="25.0" prefWidth="167.0" promptText="Category" style="-fx-border-width: 0 0 1 0; -fx-border-color: #ffffff; -fx-background-color: #47a025; -fx-prompt-text-fill:#fff;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
@@ -85,11 +85,11 @@
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_decItem" layoutX="289.0" layoutY="210.0" text="Description" textFill="#a4e48b">
-                    <font>
-                        <Font name="System Bold" size="17.0" />
-                    </font>
-                </Label>
+<!--                <Label fx:id="lbl_decItem" layoutX="289.0" layoutY="210.0" text="Description" textFill="#a4e48b">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="17.0" />-->
+<!--                    </font>-->
+<!--                </Label>-->
                 <TextField fx:id="tf_itemName" alignment="CENTER" layoutX="108.0" layoutY="152.0" prefHeight="25.0" prefWidth="167.0" promptText="Name" style="-fx-border-width: 0 0 1 0; -fx-border-color: grey; -fx-background-color: #47a025;">
                <font>
                   <Font name="System Bold" size="14.0" />
