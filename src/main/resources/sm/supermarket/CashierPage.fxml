@@ -17,9 +17,9 @@
             <children>
                 <TableView fx:id="tbl_cart" layoutX="29.0" layoutY="310.0" prefHeight="237.0" prefWidth="769.0">
                     <columns>
-                        <TableColumn fx:id="column_itemID" prefWidth="99.0" text="Item ID" />
-                        <TableColumn fx:id="column_itemName" minWidth="0.0" prefWidth="104.0" text="Item Name" />
-                        <TableColumn fx:id="column_ItemDescription" minWidth="0.0" prefWidth="179.0" text="Item Description" />
+                        <TableColumn fx:id="column_itemID" prefWidth="99.0" text="ID" />
+                        <TableColumn fx:id="column_itemName" minWidth="0.0" prefWidth="104.0" text="Name" />
+                        <TableColumn fx:id="column_ItemDescription" minWidth="0.0" prefWidth="179.0" text=" Description" />
                         <TableColumn fx:id="column_price" minWidth="0.0" prefWidth="146.0" text="Price" />
                         <TableColumn fx:id="column_quantity" minWidth="0.0" prefWidth="127.0" text="Quantity" />
                   <TableColumn fx:id="column_total" minWidth="0.0" prefWidth="113.0" text="Total" />
@@ -140,6 +140,7 @@
                                 <Font name="System Bold" size="15.0" />
                             </font>
                         </JFXButton>
+                  <Label fx:id="lbl_qtyPrice" layoutX="232.0" layoutY="245.0" textFill="#47a025" />
                     </children>
                 </Pane>
                 <Pane layoutX="738.0" layoutY="14.0" prefHeight="276.0" prefWidth="248.0" style="-fx-background-color: #47a025; -fx-background-radius: 20;">
