@@ -56,6 +56,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Label lbl_orders;
 
+    /**
+     * Display the number of employees that are register in the database
+     */
     public void nrEmpl() {
         try {
             String sql = "Select count(ID) from employees";
@@ -72,6 +75,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Display the number of customer that are register in the database
+     */
     public void nrCustomer() {
         try {
             String sql = "Select count(ID) from customers";
@@ -87,6 +93,10 @@ public class DashboardController implements Initializable {
 
         }
     }
+
+    /**
+     * Display the number of orders that are register in the database
+     */
     public void nrOrder() {
         try {
             String sql = "Select count(OrderID) from cashierorder_table";
@@ -102,6 +112,10 @@ public class DashboardController implements Initializable {
 
         }
     }
+
+    /**
+     * Display the number of earnings that are register in the database
+     */
     public void earnings() {
         try {
             String sql = "Select Sum(Total_With_Discount) from cashierorder_table";

@@ -143,6 +143,9 @@ public class EmployeesController implements Initializable {
 
     }
 
+    /**
+     * Add new Employees to the table
+     */
     public void addEmployee() {
 
 
@@ -158,7 +161,7 @@ public class EmployeesController implements Initializable {
         String salary = tf_salary.getText();
 
 
-        if (validateFileds()& validateNumber() & validateFirstName() & validateLastName() & validateSalary()) {
+        if (validateFileds() & validateNumber() & validateFirstName() & validateLastName() & validateSalary()) {
             try {
 
                 pst = conDB.prepareStatement("INSERT INTO employees(firstname,lastname,birthday,gender,address,phonenumber,username,password,role,salary) VALUES(?,?,?,?,?,?,?,?,?,?)");
@@ -211,12 +214,17 @@ public class EmployeesController implements Initializable {
 
     }
 
-    private boolean validateNumber(){
+    /**
+     * Check is the phone number is valid
+     *
+     * @return
+     */
+    private boolean validateNumber() {
         Pattern p = Pattern.compile("[0][6][7-9][0-9]{7}");
         Matcher m = p.matcher(tf_phoneNo.getText());
-        if(m.find() && m.group().equals(tf_phoneNo.getText())){
-            return  true;
-        }else{
+        if (m.find() && m.group().equals(tf_phoneNo.getText())) {
+            return true;
+        } else {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Phone Number");
             alert.setHeaderText(null);
@@ -225,13 +233,19 @@ public class EmployeesController implements Initializable {
             return false;
         }
     }
-    private boolean validateFirstName(){
+
+    /**
+     * Check is the firstname contains only letters and not numbers or other characters
+     *
+     * @return
+     */
+    private boolean validateFirstName() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(tf_firstname.getText());
 
-        if((m.find() && m.group().equals(tf_firstname.getText()))){
-            return  true;
-        }else{
+        if ((m.find() && m.group().equals(tf_firstname.getText()))) {
+            return true;
+        } else {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Firstname");
             alert.setHeaderText(null);
@@ -240,12 +254,18 @@ public class EmployeesController implements Initializable {
             return false;
         }
     }
-    private boolean validateLastName(){
+
+    /**
+     * Check is the lastname contains only letters and not numbers or other characters
+     *
+     * @return
+     */
+    private boolean validateLastName() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(tf_lastname.getText());
-        if((m.find() && m.group().equals(tf_lastname.getText()))){
-            return  true;
-        }else{
+        if ((m.find() && m.group().equals(tf_lastname.getText()))) {
+            return true;
+        } else {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Lastname");
             alert.setHeaderText(null);
@@ -254,12 +274,18 @@ public class EmployeesController implements Initializable {
             return false;
         }
     }
-    private boolean validateSalary(){
+
+    /**
+     * Check if salary enteer contains only numbers
+     *
+     * @return
+     */
+    private boolean validateSalary() {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(tf_salary.getText());
-        if((m.find() && m.group().equals(tf_salary.getText()))){
-            return  true;
-        }else{
+        if ((m.find() && m.group().equals(tf_salary.getText()))) {
+            return true;
+        } else {
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Salary");
             alert.setHeaderText(null);
@@ -270,7 +296,11 @@ public class EmployeesController implements Initializable {
     }
 
 
-
+    /**
+     * Check if the field are empty or not
+     *
+     * @return
+     */
     private boolean validateFileds() {
 
         String username = tf_username.getText();
@@ -279,7 +309,7 @@ public class EmployeesController implements Initializable {
         String birthday = dp_dob.getEditor().getText();
 
 
-        if (birthday.isEmpty() | address.isEmpty()  | username.isEmpty() | password.isEmpty()) {
+        if (birthday.isEmpty() | address.isEmpty() | username.isEmpty() | password.isEmpty()) {
 
             Alert alert = new Alert(WARNING);
             alert.setTitle("Validate Fields");
@@ -396,7 +426,7 @@ public class EmployeesController implements Initializable {
                         ex.getCause();
                     }
 
-
+                    // can use the arrow for the selection of the employee in the table
                     tbl_employee.setOnKeyReleased(f -> {
                         if (f.getCode() == KeyCode.UP || f.getCode() == KeyCode.DOWN) {
                             try {
@@ -452,6 +482,7 @@ public class EmployeesController implements Initializable {
                     });
                 }
         );
+        //Search for the employee
         final FilteredList<Employee> filteredList = new FilteredList<>(employees, e -> true);
         tf_search.setOnKeyReleased(f -> {
             tf_search.textProperty().addListener((observableValue, oldValeu, newValue) -> {
@@ -474,7 +505,9 @@ public class EmployeesController implements Initializable {
 
     }
 
-
+    /**
+     * Update the employee table
+     */
     public void updateEmp() {
 
 
@@ -528,7 +561,9 @@ public class EmployeesController implements Initializable {
         }
     }
 
-
+    /**
+     * Delete employee from the table
+     */
     public void deleteEmp() {
         int id = Integer.parseInt(tf_employeeID.getText());
         String query = "delete from employees where id = ?";

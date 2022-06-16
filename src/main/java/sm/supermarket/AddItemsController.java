@@ -142,7 +142,9 @@ public class AddItemsController implements Initializable {
 
     }
 
-
+    /**
+     * Add new category to the database
+     */
     public void addCategory() {
 
 
@@ -171,6 +173,9 @@ public class AddItemsController implements Initializable {
         }
     }
 
+    /**
+     * update category
+     */
     public void updateCateg() {
 
 
@@ -203,6 +208,9 @@ public class AddItemsController implements Initializable {
         }
     }
 
+    /**
+     * update category
+     */
     public void deleteCateg() {
         int id = Integer.parseInt(lbl_categoryID.getText());
         String query = "delete from item_category where id = ?";
@@ -227,7 +235,9 @@ public class AddItemsController implements Initializable {
 
     }
 
-
+    /**
+     * Add new Items
+     */
     public void addItem() {
 
         String Item_Name = tf_itemName.getText();
@@ -262,7 +272,9 @@ public class AddItemsController implements Initializable {
         }
     }
 
-
+    /**
+     * Update Items
+     */
     public void updateItem() {
 
 
@@ -300,7 +312,9 @@ public class AddItemsController implements Initializable {
         }
     }
 
-
+    /**
+     * Delete Items
+     */
     public void deleteItem() {
         int id = Integer.parseInt(lbl_itemID.getText());
         String query = "delete from add_item where id = ?";
@@ -324,7 +338,9 @@ public class AddItemsController implements Initializable {
 
     }
 
-
+    /**
+     * Show all categories to comobox
+     */
     public void cmbCateogry() {
         category.clear();
         String query = "select Item_Category from item_category";
@@ -341,7 +357,9 @@ public class AddItemsController implements Initializable {
         }
     }
 
-
+    /**
+     * Display all categories in to the table
+     */
     public void table() {
 
         final ObservableList<ItemCategory> itemCategories = FXCollections.observableArrayList();
@@ -395,7 +413,7 @@ public class AddItemsController implements Initializable {
                         ex.getCause();
                     }
 
-
+                    //select categories form the table
                     tbl_category.setOnKeyReleased(f -> {
                         if (f.getCode() == KeyCode.UP || f.getCode() == KeyCode.DOWN) {
                             try {
@@ -426,6 +444,7 @@ public class AddItemsController implements Initializable {
                     });
                 }
         );
+        //search categories through the search filed
         final FilteredList<ItemCategory> filteredList = new FilteredList<>(itemCategories, e -> true);
         tf_searchcategory.setOnKeyReleased(f -> {
             tf_searchcategory.textProperty().addListener((observableValue, oldValeu, newValue) -> {
@@ -448,7 +467,9 @@ public class AddItemsController implements Initializable {
 
     }
 
-
+    /**
+     * Display all items in to the table
+     */
     public void tableItem() {
 
         final ObservableList<Items> items = FXCollections.observableArrayList();
@@ -484,6 +505,7 @@ public class AddItemsController implements Initializable {
             e.getCause();
 
         }
+        //select items form the table
         tbl_itemes.setOnMouseClicked(e -> {
                     try {
 
@@ -546,6 +568,7 @@ public class AddItemsController implements Initializable {
                     });
                 }
         );
+        //search items through the search filed
         final FilteredList<Items> filteredList = new FilteredList<>(items, e -> true);
         tf_searchItem.setOnKeyReleased(f -> {
             tf_searchItem.textProperty().addListener((observableValue, oldValeu, newValue) -> {
@@ -568,7 +591,9 @@ public class AddItemsController implements Initializable {
 
     }
 
-
+    /**
+     * clear the fields
+     */
     public void empty() {
         tf_itmcategory.setText("");
         ta_categDes.setText("");
