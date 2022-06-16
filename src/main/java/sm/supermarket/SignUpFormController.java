@@ -126,7 +126,7 @@ public class SignUpFormController {
 
     public void login() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("CustomerSideBar.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));

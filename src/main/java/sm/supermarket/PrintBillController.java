@@ -57,7 +57,7 @@ public class PrintBillController implements Initializable {
 
 
     /**
-     * Save all the orer receip in to a text file
+     * Save all the order receipt in to a text file
      * @throws IOException
      */
     public void print() throws IOException {
