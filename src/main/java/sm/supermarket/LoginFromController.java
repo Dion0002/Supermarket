@@ -74,9 +74,9 @@ public class LoginFromController implements Initializable {
     public void loginButtonOnAction(ActionEvent event) {
         if ((tf_username.getText().isBlank() == true && pf_password.getText().isBlank() == true)) {
             lbl_invalid.setText("Please enter username and password");
-        } else if(tf_username.getText().isBlank() == true){
+        } else if (tf_username.getText().isBlank() == true) {
             lbl_invalid.setText("Username cannot be empty");
-        } else if(pf_password.getText().isBlank() == true){
+        } else if (pf_password.getText().isBlank() == true) {
             lbl_invalid.setText("Password cannot be empty");
         } else if (auth() == true) {
         } else {
@@ -95,9 +95,9 @@ public class LoginFromController implements Initializable {
         try {
             ListLogin = validateLogin(tf_username.getText(), pf_password.getText());
 
-            if (ListLogin.get(0).getRole().equalsIgnoreCase("admin")) {
+            if (UserRole.getRole().equalsIgnoreCase("admin")) {
                 AdminLog();
-            } else if (ListLogin.get(0).getRole().equalsIgnoreCase("cashier")) {
+            } else if (UserRole.getRole().equalsIgnoreCase("cashier")) {
                 CashLog();
             } else {
                 CusLog();
@@ -137,9 +137,9 @@ public class LoginFromController implements Initializable {
 
             while (rs.next()) {
                 UserRole ur = new UserRole();
-                ur.setUsername(rs.getString("username"));
-                ur.setPassword(rs.getString("password"));
-                ur.setRole(rs.getString("role"));
+                UserRole.setUsername(rs.getString("username"));
+                UserRole.setPassword(rs.getString("password"));
+                UserRole.setRole(rs.getString("role"));
                 Uname = rs.getString("username");
                 UserRole.username = Uname;
 

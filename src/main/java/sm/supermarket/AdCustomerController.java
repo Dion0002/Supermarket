@@ -460,7 +460,7 @@ public class AdCustomerController  implements Initializable {
 
     public void deleteEmp() {
         int id = Integer.parseInt(tf_customerID.getText());
-        String query = "delete from employees where id = ?";
+        String query = "delete from customers where id = ?";
         try {
 
             pst = conDB.prepareStatement(query);
@@ -473,9 +473,9 @@ public class AdCustomerController  implements Initializable {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Employee Deleting");
-        alert.setTitle("Delete Employee");
-        alert.setContentText("Employee Deleted");
+        alert.setHeaderText("Customer Deleting");
+        alert.setTitle("Customer Employee");
+        alert.setContentText("Customer Deleted");
         alert.showAndWait();
         empty();
 

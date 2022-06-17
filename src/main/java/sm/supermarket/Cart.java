@@ -1,41 +1,50 @@
 package sm.supermarket;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Cart {
     protected static String CashUsername;
-    protected static int id;
-    protected static String ItemName;
-    protected static String ItemDescription;
-    protected static int price;
-    protected static String quantity;
-    protected static int total;
+    private  final SimpleStringProperty id;
+    private  final SimpleStringProperty ItemName;
+    private  final SimpleStringProperty ItemDescription;
+    private  final SimpleStringProperty price;
+    private  final SimpleStringProperty quantity;
+    private  final SimpleStringProperty total;
     protected static String OrderID;
     protected static String Date;
     protected static String Time;
     protected static int totalDis;
     protected static int dis;
-    protected static String Bill;
 
 
-    public Cart() {
-    }
-
-
-    public Cart(int id, String itemName, String itemDescription, int price, String quantity, int total, String orderID, String date, String time, int totalDis, int dis, String bill, String cashUsername) {
-        Cart.id = id;
-        ItemName = itemName;
-        ItemDescription = itemDescription;
-        Cart.price = price;
-        Cart.quantity = quantity;
-        Cart.total = total;
+    public Cart(String orderID, String date, String time, int totalDis, int dis, String cashUsername, String quantity,String id,String price ,String itemName,String itemDescription,String total) {
         OrderID = orderID;
         Date = date;
         Time = time;
-        Cart.totalDis = totalDis;
-        Cart.dis = dis;
-        Bill = bill;
+        this.totalDis = totalDis;
+        this.dis = dis;
         CashUsername = cashUsername;
+        this.id = new SimpleStringProperty(id);
+        this.ItemName =  new SimpleStringProperty(itemName);
+        this.ItemDescription = new SimpleStringProperty(itemDescription);
+        this.price =  new SimpleStringProperty(price);
+        this.quantity =  new SimpleStringProperty(quantity);
+        this.total =  new SimpleStringProperty(total);
+
 
     }
+
+
+    public Cart(String id, String itemName, String itemDescription, String price, String quantity, String total) {
+        this.id = new SimpleStringProperty(id);
+        this.ItemName =  new SimpleStringProperty(itemName);
+        this.ItemDescription = new SimpleStringProperty(itemDescription);
+        this.price =  new SimpleStringProperty(price);
+        this.quantity =  new SimpleStringProperty(quantity);
+        this.total =  new SimpleStringProperty(total);
+    }
+
+
 
     public static String getCashUsername() {
         return CashUsername;
@@ -45,100 +54,115 @@ public class Cart {
         CashUsername = cashUsername;
     }
 
-    public int getId() {
+    public String getId() {
+        return id.get();
+    }
+
+    public SimpleStringProperty idProperty() {
         return id;
     }
 
-    public void setId(int id) {
-        Cart.id = id;
+    public void setId(String id) {
+        this.id.set(id);
     }
 
     public String getItemName() {
+        return ItemName.get();
+    }
+
+    public SimpleStringProperty itemNameProperty() {
         return ItemName;
     }
 
     public void setItemName(String itemName) {
-        ItemName = itemName;
+        this.ItemName.set(itemName);
     }
 
     public String getItemDescription() {
+        return ItemDescription.get();
+    }
+
+    public SimpleStringProperty itemDescriptionProperty() {
         return ItemDescription;
     }
 
     public void setItemDescription(String itemDescription) {
-        ItemDescription = itemDescription;
+        this.ItemDescription.set(itemDescription);
     }
 
-    public int getPrice() {
+    public String getPrice() {
+        return price.get();
+    }
+
+    public SimpleStringProperty priceProperty() {
         return price;
     }
 
-    public void setPrice(int price) {
-        Cart.price = price;
+    public void setPrice(String price) {
+        this.price.set(price);
     }
 
     public String getQuantity() {
+        return quantity.get();
+    }
+
+    public SimpleStringProperty quantityProperty() {
         return quantity;
     }
 
     public void setQuantity(String quantity) {
-        Cart.quantity = quantity;
+        this.quantity.set(quantity);
     }
 
-    public int getTotal() {
+    public String getTotal() {
+        return total.get();
+    }
+
+    public SimpleStringProperty totalProperty() {
         return total;
     }
 
-    public void setTotal(int total) {
-        Cart.total = total;
+    public void setTotal(String total) {
+        this.total.set(total);
     }
 
-    public String getOrderID() {
+    public static String getOrderID() {
         return OrderID;
     }
 
-    public void setOrderID(String orderID) {
+    public static void setOrderID(String orderID) {
         OrderID = orderID;
     }
 
-    public String getDate() {
+    public static String getDate() {
         return Date;
     }
 
-    public void setDate(String date) {
+    public static void setDate(String date) {
         Date = date;
     }
 
-    public String getTime() {
+    public static String getTime() {
         return Time;
     }
 
-    public void setTime(String time) {
+    public static void setTime(String time) {
         Time = time;
     }
 
-    public int getTotalDis() {
+    public static int getTotalDis() {
         return totalDis;
     }
 
-    public void setTotalDis(int totalDis) {
+    public static void setTotalDis(int totalDis) {
         Cart.totalDis = totalDis;
     }
 
-    public int getDis() {
+    public static int getDis() {
         return dis;
     }
 
-    public void setDis(int dis) {
+    public static void setDis(int dis) {
         Cart.dis = dis;
-    }
-
-    public String getBill() {
-        return Bill;
-    }
-
-    public void setBill(String bill) {
-        Bill = bill;
-
     }
 }

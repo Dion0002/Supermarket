@@ -1,0 +1,5 @@
+Order ID     Order Date       Cashier
+A26G         2022-06-16       aa
+Product      Price   Quantity  Total
+Discount :                     0
+Total    :                     2245

@@ -15,93 +15,66 @@ import javafx.stage.StageStyle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static javafx.scene.control.Alert.AlertType.WARNING;
 import static javafx.scene.paint.Color.TRANSPARENT;
 
 public class SignUpFormController {
 
-    @FXML
-    private JFXButton btn_goback;
-
-    @FXML
-    private JFXButton btn_login;
-
-    @FXML
-    private DatePicker dp_dob;
-
-    @FXML
-    private ToggleGroup gender;
-
-    @FXML
-    private ImageView img_add;
-
-    @FXML
-    private ImageView img_confP;
-
-    @FXML
-    private ImageView img_dob;
-
-    @FXML
-    private ImageView img_firstname;
-
-    @FXML
-    private ImageView img_gender;
-
-    @FXML
-    private ImageView img_lastname;
-
-    @FXML
-    private ImageView img_pass;
-
-    @FXML
-    private ImageView img_phoneNumber;
-
-    @FXML
-    private ImageView img_user;
-
-    @FXML
-    private ImageView img_userLogo;
-
-    @FXML
-    private Label lbl_userrole;
-
-    @FXML
-    private TextField pf_confPass;
-
-    @FXML
-    private TextField pf_password;
-
-    @FXML
-    private JFXRadioButton rb_male;
-
-    @FXML
-    private JFXRadioButton rb_female;
-
-    @FXML
-    private TextArea ta_address;
-
-    @FXML
-    private TextField tf_firstname;
-
-    @FXML
-    private TextField tf_lastname;
-
-    @FXML
-    private TextField tf_phoneNo;
-
-    @FXML
-    private TextField tf_username;
-
-
     DBConnection conn = new DBConnection();
     Connection conDB = conn.getConnection();
     PreparedStatement pst;
     ResultSet rs;
+    @FXML
+    private JFXButton btn_goback;
+    @FXML
+    private JFXButton btn_login;
+    @FXML
+    private DatePicker dp_dob;
+    @FXML
+    private ToggleGroup gender;
+    @FXML
+    private ImageView img_add;
+    @FXML
+    private ImageView img_confP;
+    @FXML
+    private ImageView img_dob;
+    @FXML
+    private ImageView img_firstname;
+    @FXML
+    private ImageView img_gender;
+    @FXML
+    private ImageView img_lastname;
+    @FXML
+    private ImageView img_pass;
+    @FXML
+    private ImageView img_phoneNumber;
+    @FXML
+    private ImageView img_user;
+    @FXML
+    private ImageView img_userLogo;
+    @FXML
+    private Label lbl_userrole;
+    @FXML
+    private TextField pf_confPass;
+    @FXML
+    private TextField pf_password;
+    @FXML
+    private JFXRadioButton rb_male;
+    @FXML
+    private JFXRadioButton rb_female;
+    @FXML
+    private TextArea ta_address;
+    @FXML
+    private TextField tf_firstname;
+    @FXML
+    private TextField tf_lastname;
+    @FXML
+    private TextField tf_phoneNo;
+    @FXML
+    private TextField tf_username;
+
     /**
      * This is for the goback button to open the login page
      *
@@ -153,7 +126,7 @@ public class SignUpFormController {
 
     public void login() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("CustomerSideBar.fxml"));
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));
@@ -185,35 +158,34 @@ public class SignUpFormController {
         String userrole = lbl_userrole.getText();
 
 
+        try {
+            String sql1 = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Phone,Role) VALUES (?,?,?,?,?,?,?,?,?)";
+            pst = conDB.prepareStatement(sql1);
+            pst.setString(1, firstname);
+            pst.setString(2, lastname);
+            pst.setString(3, username);
+            pst.setString(4, password);
+            pst.setString(5, togglevalue);
+            pst.setString(6, address);
+            pst.setString(7, String.valueOf(birthday));
+            pst.setInt(8, Integer.parseInt(phone));
+            pst.setString(9, userrole);
+            pst.executeUpdate();
 
-            try {
-                String sql1 = "INSERT INTO customers(Firstname, Lastname, Username, Password, Gender, Address,Birthday,Phone,Role) VALUES (?,?,?,?,?,?,?,?,?)";
-                pst = conDB.prepareStatement(sql1);
-                pst.setString(1, firstname);
-                pst.setString(2, lastname);
-                pst.setString(3, username);
-                pst.setString(4, password);
-                pst.setString(5, togglevalue);
-                pst.setString(6, address);
-                pst.setString(7, String.valueOf(birthday));
-                pst.setInt(8, Integer.parseInt(phone));
-                pst.setString(9, userrole);
-                pst.executeUpdate();
 
+            String sql = "INSERT INTO userlogin(Username,Password,Role) Values('" + username + "','" + password + "','" + userrole + "')";
+            pst = conDB.prepareStatement(sql);
+            pst.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Customer Registration");
+            alert.setTitle("Sign UP");
+            alert.setContentText("Registration Successfully");
+            alert.showAndWait();
 
-                String sql = "INSERT INTO userlogin(Username,Password,Role) Values('" + username + "','" + password + "','" + userrole + "')";
-                pst=conDB.prepareStatement(sql);
-                pst.executeUpdate();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Customer Registration");
-                alert.setTitle("Sign UP");
-                alert.setContentText("Registration Successfully");
-                alert.showAndWait();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
 
 
     }

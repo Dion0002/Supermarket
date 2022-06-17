@@ -25,8 +25,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -40,7 +38,7 @@ public class CashierController implements Initializable {
     PreparedStatement pst;
     ResultSet rs;
     ObservableList<Cart> cart = FXCollections.observableArrayList();
-    Cart cartItem = new Cart();
+
     @FXML
     private JFXButton btn_ShowBill;
     @FXML
@@ -107,7 +105,12 @@ public class CashierController implements Initializable {
     private Label lbl_totalDiscount;
     @FXML
     private JFXButton btn_calculateDiscount;
+    @FXML
+    private Label lbl_qtyPrice;
 
+    /**
+     * generate random Id code for the order
+     */
     private void generateCode() {
 
 
@@ -134,6 +137,9 @@ public class CashierController implements Initializable {
 
     }
 
+    /**
+     * genederate the date and time
+     */
     public void generateDateTime() {
         lbl_OrderDate.setText(LocalDate.now().toString());
         Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, (e) -> {
@@ -143,12 +149,15 @@ public class CashierController implements Initializable {
         timeline.setCycleCount(-1);
         timeline.play();
 
-
         String time = lbl_time.getText();
         Cart.Time = time;
-
     }
 
+    /**
+     * logout button
+     *
+     * @param event
+     */
     public void logout(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("LoginForm.fxml"));
@@ -168,6 +177,11 @@ public class CashierController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Show all the items that are inserted into the cart(table)
+     *
+     * @param event
+     */
     public void ShowBill(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("PrintBill.fxml"));
@@ -178,22 +192,26 @@ public class CashierController implements Initializable {
             PrintBill.show();
             scene.setFill(TRANSPARENT);
 
+
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
-//        empty();
-//        tbl_cart.getItems().clear();
-//        lbl_ItemCount.setText(String.valueOf(0));
-//        lbl_total.setText(String.valueOf(0));
-//        lbl_Discount.setText(String.valueOf(0));
-//        lbl_totalDiscount.setText(String.valueOf(0));
+        empty();
+        tbl_cart.getItems().clear();
+        lbl_ItemCount.setText(String.valueOf(0));
+        lbl_total.setText(String.valueOf(0));
+        lbl_Discount.setText(String.valueOf(0));
+        lbl_totalDiscount.setText(String.valueOf(0));
         generateCode();
         generateDateTime();
-        bill();
+
 
     }
 
+    /**
+     * Search item by their id
+     */
     public void searchItem() {
         String id = tf_ItemID.getText();
 
@@ -232,6 +250,9 @@ public class CashierController implements Initializable {
 
     }
 
+    /**
+     * Search Customer by there username
+     */
     public void searchCustomer() {
         String Uname = tf_username.getText();
 
@@ -250,6 +271,8 @@ public class CashierController implements Initializable {
                     tf_phoneNumber.setText(rs.getString("Phone"));
                     dp_dob.setValue(LocalDate.parse(rs.getString("Birthday")));
                     lbl_Discount.setText(String.valueOf(10));
+                    String dis = lbl_Discount.getText();
+                    Cart.dis = Integer.parseInt(dis);
                 }
 
             } catch (SQLException e) {
@@ -276,10 +299,16 @@ public class CashierController implements Initializable {
 
     }
 
+    /**
+     * Display the cashier username from login
+     */
     public void cashUser() {
         lbl_cachierUsername.setText(String.valueOf(UserRole.username));
     }
 
+    /**
+     * Clear fields
+     */
     public void empty() {
         tf_username.setText("");
         tf_firstname.setText("");
@@ -295,94 +324,150 @@ public class CashierController implements Initializable {
 
     }
 
-    private void tableOrder() {
+    /**
+     * Add items to the cart
+     */
+    public void addCart() {
 
-        column_itemID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        column_itemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
-        column_ItemDescription.setCellValueFactory(new PropertyValueFactory<>("ItemDescription"));
-        column_price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        column_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        column_total.setCellValueFactory(new PropertyValueFactory<>("total"));
-        tbl_cart.setItems(cart);
 
-    }
-
-    public void addCart(ActionEvent event) {
-
-        Cart cartOrder = new Cart();
         int price = Integer.parseInt(tf_price.getText());
         int qunatity = Integer.parseInt(tf_quantity.getText());
 
-//         if(countQuantity < qunatity){
-        cartOrder.setId(Integer.parseInt(tf_ItemID.getText()));
-        cartOrder.setItemName(tf_ItemName.getText());
-        cartOrder.setItemDescription(lbl_description.getText());
-        cartOrder.setPrice(Integer.parseInt(tf_price.getText()));
-        cartOrder.setQuantity(tf_quantity.getText());
-        cartOrder.setTotal(Integer.parseInt(String.valueOf((price * qunatity))));
-        tbl_cart.getItems().add(cartOrder);
+
+        String OrderID = lbl_orderID.getText();
+        String ItemID = tf_ItemID.getText();
+        String ItemName = tf_ItemName.getText();
+        String decrip = lbl_description.getText();
+
+        String Itemprice = tf_price.getText();
+        String ItemQty = tf_quantity.getText();
+        String QtyPrice = Integer.toString(price * qunatity);
+        lbl_qtyPrice.setText(QtyPrice);
+
+        String Total = lbl_qtyPrice.getText();
+
+        try {
+
+            pst = conDB.prepareStatement("INSERT INTO orderitems(ItemID,OrderItemID,Item_Name,Item_Dec,ItemPrice,Item_QTY,Total) VALUES(?,?,?,?,?,?,?)");
+            pst.setString(1, ItemID);
+            pst.setString(2, OrderID);
+            pst.setString(3, ItemName);
+            pst.setString(4, decrip);
+            pst.setString(5, Itemprice);
+            pst.setString(6, ItemQty);
+            pst.setString(7, Total);
+            pst.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+
+        }
         tableOrder();
         ItemCount();
         FinalTotal();
-//            }else{
-//
-//                Alert alert = new Alert(Alert.AlertType.WARNING);
-//                alert.setHeaderText("Items");
-//                alert.setTitle("Quantity Items");
-//                alert.setContentText("Not enough items in stock");
-//                alert.showAndWait();
-//
-//            }
-
 
     }
-//    int countQuantity ;
-//    public int updateQuantity() {
-//        String id = tf_ItemID.getText();
-//        String sql = "Select Quantity from add_item where ID=?";
-//
-//        try {
-//            pst = conDB.prepareStatement(sql);
-//            pst.setString(1, id);
-//            rs = pst.executeQuery();
-//
-//
-//            while (rs.next()) {
-//                countQuantity = rs.getInt(1);
-//            }
-//            int value = Integer.parseInt(tf_quantity.getText());
-//            countQuantity -= value;
-//            String sql2 = "Update add_item set Quantity=? where ID=?";
-//            pst = conDB.prepareStatement(sql2);
-//
-//            pst.setInt(1, countQuantity);
-//            pst.setString(2, id);
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            e.getCause();
-//        }
-//
-//        return countQuantity;
-//    }
 
     public void RemoveItem(ActionEvent event) {
-        ObservableList<Cart> items = tbl_cart.getItems();
 
-       if(tbl_cart.getItems().isEmpty()) {
-           int selectedID = tbl_cart.getSelectionModel().getSelectedIndex();
-           tbl_cart.getItems().remove(selectedID);
+        int id = Integer.parseInt(tf_ItemID.getText());
+        String orderID = lbl_orderID.getText();
+        String query = "delete from orderitems where ItemID = ? AND OrderItemID = ?";
+        try {
 
-           ItemCount();
-           FinalTotal();
-           if (items.isEmpty()) {
-               lbl_ItemCount.setText("0");
-               lbl_total.setText("0");
-           }
-       }else{
+            pst = conDB.prepareStatement(query);
+            pst.setString(1, String.valueOf(id));
+            pst.setString(2, orderID);
+            pst.executeUpdate();
+            pst.close();
 
-       }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Remove Item");
+        alert.setTitle("Do you want to remove this items");
+        alert.setContentText("Item Removed");
+        alert.showAndWait();
+        tableOrder();
+        ItemCount();
+        FinalTotal();
+        empty();
+
+
     }
+
+    private void tableOrder() {
+        final ObservableList<Cart> carts = FXCollections.observableArrayList();
+        String OrderID = lbl_orderID.getText();
+
+        try {
+            String query = "select ItemID,Item_Name,Item_Dec,ItemPrice,Item_Qty,Total from orderitems where OrderItemID=?";
+            pst = conDB.prepareStatement(query);
+            pst.setString(1, Cart.getOrderID());
+            rs = pst.executeQuery();
+            {
+                while (rs.next()) {
+                    carts.add(new Cart(
+                            rs.getString("ItemID"),
+                            rs.getString("Item_Name"),
+                            rs.getString("Item_Dec"),
+                            rs.getString("ItemPrice"),
+                            rs.getString("Item_Qty"),
+                            rs.getString("Total")
+
+
+                    ));
+                }
+
+            }
+
+            column_itemID.setCellValueFactory(new PropertyValueFactory<>("id"));
+            column_itemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
+            column_ItemDescription.setCellValueFactory(new PropertyValueFactory<>("ItemDescription"));
+            column_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+            column_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            column_total.setCellValueFactory(new PropertyValueFactory<>("total"));
+            tbl_cart.setItems(carts);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+        tbl_cart.setOnMouseClicked(e -> {
+            try {
+
+
+                Cart orderCart = tbl_cart.getSelectionModel().getSelectedItem();
+                String query = "select * from orderitems where ItemID = ?";
+                PreparedStatement ps = conDB.prepareStatement(query);
+                ps.setString(1, orderCart.getId());
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    tf_ItemID.setText(rs.getString("ItemID"));
+                    tf_ItemName.setText(rs.getString("Item_Name"));
+                    lbl_description.setText(rs.getString("Item_Dec"));
+                    tf_price.setText(rs.getString("ItemPrice"));
+                    tf_quantity.setText(rs.getString("Item_QTY"));
+
+
+                }
+
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+
+        });
+
+    }
+
 
     public void ItemCount() {
 
@@ -397,10 +482,11 @@ public class CashierController implements Initializable {
     public void FinalTotal() {
 
         int total = 0;
-        for (Cart value : tbl_cart.getItems()) {
-            total = total + value.getTotal();
+        for (int i = 0; i < tbl_cart.getItems().size(); i++) {
+            total = total + Integer.valueOf(String.valueOf(tbl_cart.getColumns().get(5).getCellObservableValue(i).getValue()));
             lbl_total.setText(String.valueOf(total));
             lbl_totalDiscount.setText(String.valueOf(total));
+            Cart.totalDis = total;
         }
     }
 
@@ -409,6 +495,7 @@ public class CashierController implements Initializable {
         double dis = Integer.parseInt(lbl_Discount.getText());
         total = (int) (total - (total * dis / 100));
         lbl_totalDiscount.setText(String.valueOf(total));
+        Cart.totalDis = total;
     }
 
     public void SaveOrder() {
@@ -439,43 +526,13 @@ public class CashierController implements Initializable {
             alert.setTitle("New Order");
             alert.setContentText("Order Saved");
             alert.showAndWait();
-            generateCode();
-            empty();
-            tbl_cart.getItems().clear();
-            lbl_ItemCount.setText(String.valueOf(0));
-            lbl_total.setText(String.valueOf(0));
-            lbl_Discount.setText(String.valueOf(0));
-            lbl_totalDiscount.setText(String.valueOf(0));
 
 
-        //updateQuantity();
+            //updateQuantity();
         } catch (SQLException e) {
             e.printStackTrace();
             e.getCause();
 
-        }
-
-    }
-
-    public void bill() {
-
-        List<List<String>> arrlist = new ArrayList<>();
-        for (int i = 0; i < tbl_cart.getItems().size(); i++) {
-            cartItem = tbl_cart.getItems().get(i);
-            arrlist.add(new ArrayList<>());
-
-            arrlist.get(i).add(Cart.ItemName);
-            arrlist.get(i).add(String.valueOf(Cart.price));
-            arrlist.get(i).add(Cart.quantity);
-
-        }
-
-        for (int i = 0; i < arrlist.size(); i++) {
-            for (int j = 0; j < arrlist.get(i).size(); j++) {
-                String bill = String.valueOf(arrlist.get(i).get(j));
-                System.out.println(bill);
-                Cart.Bill = bill;
-            }
         }
 
     }
@@ -486,10 +543,14 @@ public class CashierController implements Initializable {
         cashUser();
         generateCode();
         generateDateTime();
+        tableOrder();
+
+
         String Cname = lbl_cachierUsername.getText();
         Cart.CashUsername = Cname;
         String date = lbl_OrderDate.getText();
         Cart.Date = date;
+
 
     }
 }
