@@ -91,7 +91,8 @@ public class CustomerProfileController implements Initializable {
 
 
     public void getData(String username){
-        System.out.println(username);
+       username = String.valueOf(UserRole.username);
+
                     try {
 
                         String query = "select * from customers where Username = ?";

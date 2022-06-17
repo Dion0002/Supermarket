@@ -1,0 +1,4 @@
+Product Name : Oranges Product Price 3 ALL
+Product Name : Tomatoes Product Price 6 ALL
+Product Name : Fish Product Price 20 ALL
+Total sum 29.0 ALL

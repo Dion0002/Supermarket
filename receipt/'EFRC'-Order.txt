@@ -1,0 +1,9 @@
+Order ID     Order Date       Cashier
+
+EFRC         2022-06-17       Mattia
+
+Product      Price   Quantity  Total
+Bananas        4       3         12
+
+Discount :                     10
+Total    :                     10

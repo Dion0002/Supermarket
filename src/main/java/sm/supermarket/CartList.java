@@ -163,7 +163,7 @@ public class CartList implements Initializable {
         try{
 
 
-                FileWriter writer = new FileWriter("C:\\Users\\MSI\\Documents\\Intellij\\Supermarket\\output.txt");
+                FileWriter writer = new FileWriter("C:\\Users\\Dionb\\OneDrive\\Desktop\\SuperMarket\\receipt\\output.txt");
                 double sum = 0;
                 for(Items str: i) {
                     sum += Double.valueOf(str.getPrice());
