@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@employee.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.CustomerProfileController">
+    <children>
+        <Label fx:id="lbl_customerID" layoutX="26.0" layoutY="134.0" text="Customer ID" />
+        <Label fx:id="lbl_firstname" layoutX="26.0" layoutY="202.0" text="Firstname" />
+        <Label fx:id="lbl_lastname" layoutX="26.0" layoutY="280.0" text="Lastname" />
+        <Label fx:id="lbl_gender" layoutX="28.0" layoutY="343.0" text="Gender" />
+        <Label fx:id="lbl_address" layoutX="195.0" layoutY="268.0" text="Address" />
+        <Label fx:id="lbl_birthday" layoutX="203.0" layoutY="132.0" text="Birthday" />
+        <Label fx:id="lbl_password" layoutX="414.0" layoutY="189.0" text="Password" />
+        <TextField fx:id="tf_customerID" alignment="CENTER" editable="false" layoutX="26.0" layoutY="163.0" prefHeight="26.0" prefWidth="150.0" promptText="ID" styleClass="employeeID" />
+        <TextField fx:id="tf_firstname" alignment="CENTER" layoutX="26.0" layoutY="231.0" prefHeight="26.0" prefWidth="150.0" promptText="Firstname" styleClass="firstname" />
+        <TextField fx:id="tf_lastname" alignment="CENTER" layoutX="26.0" layoutY="309.0" prefHeight="26.0" prefWidth="150.0" promptText="Lastname" styleClass="lastname" />
+        <DatePicker fx:id="dp_dob" layoutX="203.0" layoutY="161.0" prefHeight="26.0" prefWidth="150.0" promptText="Birthday" />
+        <JFXRadioButton fx:id="rb_male" layoutX="27.0" layoutY="375.0" text="Male">
+            <toggleGroup>
+                <ToggleGroup fx:id="gender" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton fx:id="rb_female" layoutX="108.0" layoutY="374.0" text="Female" toggleGroup="$gender" />
+        <TextArea fx:id="ta_address" layoutX="198.0" layoutY="285.0" prefHeight="50.0" prefWidth="161.0" promptText="Address" styleClass="address" />
+        <Label fx:id="lbl_username" layoutX="413.0" layoutY="130.0" text="Username" />
+        <TextField fx:id="tf_username" alignment="CENTER" layoutX="412.0" layoutY="156.0" prefHeight="26.0" prefWidth="150.0" promptText="Username" styleClass="username" />
+        <PasswordField fx:id="pf_password" alignment="CENTER" layoutX="412.0" layoutY="221.0" prefHeight="26.0" prefWidth="150.0" promptText="Password" styleClass="password" />
+        <Label fx:id="lbl_phoneNo" layoutX="206.0" layoutY="201.0" text="Phone Number" />
+        <TextField fx:id="tf_phoneNo" alignment="CENTER" layoutX="203.0" layoutY="222.0" prefHeight="26.0" prefWidth="150.0" promptText="Phone Number" styleClass="phone_number" />
+         <Label fx:id="lbl_role" layoutX="206.0" layoutY="341.0" text="Role" />
+        <JFXComboBox fx:id="cb_role" layoutX="209.0" layoutY="370.0" prefHeight="25.0" prefWidth="150.0" promptText="Select" />
+      <ImageView fitHeight="256.0" fitWidth="256.0" layoutX="711.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/profile.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_customerID1" layoutX="470.0" layoutY="30.0" text="Profile">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+
+    </children>
+</AnchorPane>

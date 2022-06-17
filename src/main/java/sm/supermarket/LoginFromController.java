@@ -211,6 +211,14 @@ public class LoginFromController implements Initializable {
     public void CusLog() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("CustomerSideBar.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSideBar.fxml"));
+            root = loader.load();
+
+            CustomerSideBarController cs = loader.getController();
+            cs.setUsername(tf_username.getText());
+
+
             Stage Loggedstage = new Stage();
             Loggedstage.initStyle(StageStyle.UNDECORATED);
             Loggedstage.setScene(new Scene(root));

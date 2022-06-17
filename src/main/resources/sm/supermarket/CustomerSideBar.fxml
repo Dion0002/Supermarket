@@ -40,8 +40,8 @@
                         <Insets top="2.0"/>
                     </VBox.margin>
                 </Label>
-                <JFXButton fx:id="btn_dashboard" onMouseClicked="#dashboard" prefHeight="91.0" prefWidth="170.0"
-                           text="DASHBOARD" textFill="#a4e48b" textOverrun="CLIP">
+                <JFXButton fx:id="btn_dashboard" onMouseClicked="#profile" prefHeight="91.0" prefWidth="170.0"
+                           text="PROFILE" textFill="#a4e48b" textOverrun="CLIP">
                     <VBox.margin>
                         <Insets top="4.0"/>
                     </VBox.margin>

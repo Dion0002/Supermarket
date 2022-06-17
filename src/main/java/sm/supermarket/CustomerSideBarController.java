@@ -28,8 +28,11 @@ public class CustomerSideBarController implements Initializable {
     @FXML
     private JFXButton btn_addItem;
 
-    @FXML
-    private JFXButton btn_allbuttons;
+    private String username;
+    public void setUsername(String u){
+        username = u;
+        System.out.println(username);
+    }
 
     @FXML
     private JFXButton btn_customer;
@@ -79,9 +82,8 @@ public class CustomerSideBarController implements Initializable {
 
 
     @FXML
-    private void dashboard(MouseEvent event) {
-        loadPage("Dashboard");
-
+    private void profile(MouseEvent event) {
+         loadPage("CustomerProfile");
     }
     @FXML
     private void cartList(MouseEvent event) {
@@ -116,6 +118,17 @@ public class CustomerSideBarController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getResource(Page + ".fxml"));
 
+            if(Page.equals("CustomerProfile")){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerProfile.fxml"));
+                root = loader.load();
+
+
+                CustomerProfileController cp = loader.getController();
+                cp.getData(username);
+
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
             e.getCause();
@@ -131,7 +144,7 @@ public class CustomerSideBarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadPage("Dashboard");
+        loadPage("CustomerProfile");
     }
 
 }

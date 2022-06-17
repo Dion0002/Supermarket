@@ -6,6 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -13,11 +14,13 @@ import javafx.scene.input.KeyCode;
 import javax.swing.table.TableColumn;
 import javax.swing.text.TabableView;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -150,4 +153,41 @@ public class CartList implements Initializable {
     }
 
 
-}
+    public void deleteBtn(javafx.event.ActionEvent actionEvent) {
+        tb_cartList.getItems().clear();
+    }
+
+    public void createFile() {
+        ObservableList<Items> i = tb_cartList.getItems();
+
+        try{
+
+
+                FileWriter writer = new FileWriter("C:\\Users\\MSI\\Documents\\Intellij\\Supermarket\\output.txt");
+                double sum = 0;
+                for(Items str: i) {
+                    sum += Double.valueOf(str.getPrice());
+                    writer.write("Product Name : "+str.getItem_Name()+" Product Price "+str.getPrice()+ " ALL" + System.lineSeparator());
+
+                }
+                String total = "Total sum "+sum + " ALL";
+                writer.write(total);
+                writer.close();
+
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.show();
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.show();
+        }
+
+    }
+    }
+

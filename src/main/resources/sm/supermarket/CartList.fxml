@@ -2,28 +2,40 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.CartList">
+<AnchorPane prefHeight="460.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sm.supermarket.CartList">
    <children>
-      <Label layoutX="270.0" layoutY="28.0" text="Cart List" />
-      <TableView fx:id="tb_product" layoutX="24.0" layoutY="130.0" prefHeight="158.0" prefWidth="247.0">
+       <Pane layoutX="22.0" layoutY="12.0" prefHeight="576.0" prefWidth="980.0" style="-fx-background-color: #D1E2C4;  -fx-background-radius: 20; " stylesheets="@cartList.css">
+       <Label layoutX="457.0" layoutY="21.0" prefHeight="17.0" prefWidth="127.0" text="Cart List" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Bold" size="26.0" />
+         </font></Label>
+      <TableView fx:id="tb_product" layoutX="24.0" layoutY="130.0" prefHeight="290.0" prefWidth="247.0">
         <columns>
           <TableColumn fx:id="itemName" prefWidth="75.0" text="Item Name" />
           <TableColumn fx:id="itemPrice" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="itemCategory" prefWidth="75.0" text="Category" />
         </columns>
       </TableView>
-      <TableView fx:id="tb_cartList" layoutX="286.0" layoutY="88.0" prefHeight="200.0" prefWidth="293.0">
+      <TableView fx:id="tb_cartList" layoutX="520.0" layoutY="130.0" prefHeight="290.0" prefWidth="293.0">
         <columns>
           <TableColumn fx:id="listItemName" prefWidth="102.0" text="Item Name" />
           <TableColumn fx:id="listItemPrice" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="listItemCategory" prefWidth="90.0" text="Category" />
         </columns>
       </TableView>
-      <Label layoutX="123.0" layoutY="63.0" text="Products" />
-      <Label layoutX="415.0" layoutY="63.0" text="List" />
-      <TextField fx:id="searchItem" layoutX="24.0" layoutY="96.0" prefHeight="26.0" prefWidth="247.0" promptText="Search" />
-      <Button fx:id="printList" layoutX="439.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Print List" />
-      <Button fx:id="deleteList" layoutX="347.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Delete List" />
+      <Label layoutX="181.0" layoutY="63.0" text="Products" textAlignment="CENTER" textFill="#594432">
+            <font>
+               <Font size="23.0" />
+            </font></Label>
+      <Label layoutX="726.0" layoutY="63.0" text="List" textAlignment="CENTER" textFill="#594432">
+            <font>
+               <Font size="23.0" />
+            </font></Label>
+      <TextField fx:id="searchItem" layoutX="24.0" layoutY="96.0" prefHeight="26.0" prefWidth="400.0" promptText="Search" styleClass="search" />
+      <Button fx:id="deleteBtn" layoutX="750.0" layoutY="444.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="26.0" prefWidth="101.0" text="Delete List" />
+      <Button layoutX="557.0" layoutY="444.0" mnemonicParsing="false" onAction="#createFile" prefHeight="26.0" prefWidth="101.0" styleClass="bOdd" text="Print List" />
+       </Pane>
    </children>
 </AnchorPane>
